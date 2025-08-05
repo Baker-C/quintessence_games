@@ -1,0 +1,51 @@
+@import '../Styles/variables.css';
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.main-content {
+  flex: 1;
+  min-height: 100vh;
+}
+
+.footer-container {
+  position: relative;
+  background-color: var(--primary-bg);
+  border-top: 1px solid var(--tertiary-bg);
+  padding: var(--spacing-sm);
+  z-index: 300;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--accent-gold);
+}
+
+.footer-content span {
+  white-space: nowrap;
+}
+
+/* Ensure content doesn't get hidden behind footer */
+.main-content {
+  padding-bottom: 60px;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

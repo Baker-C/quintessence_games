@@ -1,0 +1,57 @@
+@import '../../Styles/variables.css';
+
+.fragment-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+}
+
+.cursor-fragment {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background-color: var(--accent-gold);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 0 6px var(--accent-gold);
+}
+
+.cursor-fragment.shaking {
+  animation: fragmentShake 0.07s ease-in-out infinite alternate;
+}
+
+@keyframes fragmentShake {
+  0% {
+    transform: translate(-50%, -50%) rotate(35deg) rotateZ(-5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(55deg) rotateZ(5deg);
+  }
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .fragment-cursor-container {
+    display: none;
+  }
+}
+
+/* Hide default cursor on desktop */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  
+  /* Show default cursor for text inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea {
+    cursor: text !important;
+  }
+}

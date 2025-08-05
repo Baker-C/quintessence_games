@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import HeroSection from './Components/Hero/Hero';
+import GamesForSoulSection from './Components/Sections/GamesForSoulSection';
+import GenesisSection from './Components/Sections/GenesisSection';
+import ValuesSection from './Components/Sections/ValuesSection';
+import JoinTeamSection from './Components/Sections/JoinTeamSection';
+import ApplicationForm from './Components/Sections/ApplicationForm';
+import ConceptArtSection from './Components/Sections/ConceptArtSection';
+import TeamSection from './Components/Sections/TeamSection';
+import ContactSection from './Components/Sections/ContactSection';
 import './App.css';
 
 function App() {
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
+
+  const handleOpenApplication = () => {
+    setShowApplicationForm(true);
+  };
+
+  const handleCloseApplication = () => {
+    setShowApplicationForm(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <HeroSection />
+      <GamesForSoulSection />
+      <GenesisSection />
+      <ValuesSection />
+      <TeamSection />
+      <JoinTeamSection onApplyClick={handleOpenApplication} />
+      <ConceptArtSection />
+      <ContactSection />
+      
+      {showApplicationForm && (
+        <ApplicationForm onClose={handleCloseApplication} />
+      )}
     </div>
   );
 }

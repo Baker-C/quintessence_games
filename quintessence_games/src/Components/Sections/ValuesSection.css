@@ -1,0 +1,176 @@
+@import '../../Styles/variables.css';
+
+.values-section {
+  background-color: var(--values-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.values-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  position: relative;
+  max-width: 900px;
+  margin-left: auto;
+}
+
+.values-heading {
+  font-family: var(--font-title);
+  font-size: var(--font-size-xl);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.1;
+  position: relative;
+  z-index: 2;
+}
+
+.values-text-block {
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+}
+
+.values-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* Decorative elements */
+.values-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.decoration-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 20%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.3) 80%,
+    transparent 100%
+  );
+  transform-origin: right center;
+}
+
+.decoration-line-1 {
+  top: 30%;
+  right: 0;
+  width: 300px;
+}
+
+.decoration-line-2 {
+  bottom: 30%;
+  right: 50px;
+  width: 200px;
+}
+
+/* Background pattern */
+.values-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.values-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .values-container {
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .decoration-line {
+    transform-origin: center center;
+  }
+  
+  .decoration-line-1 {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  
+  .decoration-line-2 {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .values-heading {
+    font-size: var(--font-size-lg);
+  }
+  
+  .values-text {
+    font-size: var(--font-size-base);
+  }
+  
+  .decoration-line {
+    width: 200px;
+  }
+  
+  .decoration-line-2 {
+    width: 150px;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .values-section {
+    background-color: #800000;
+  }
+  
+  .decoration-line {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #FFFFFF 20%,
+      #FFFFFF 80%,
+      transparent 100%
+    );
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .decoration-line {
+    transform: scaleX(1);
+  }
+}
