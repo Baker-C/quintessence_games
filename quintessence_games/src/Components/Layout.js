@@ -7,6 +7,7 @@ import InitialOverlay from '../Components/InitialOverlay/InitialOverlay';
 
 const Layout = ({ children }) => {
   const [isSoundEnabled, setIsSoundEnabled] = useState(false);
+  const [overlayComplete, setOverlayComplete] = useState(false);
 
   const toggleSound = () => {
     setIsSoundEnabled(!isSoundEnabled);
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
 
   const handleOverlayComplete = () => {
     console.log('Overlay complete - hiding overlay');
+    setOverlayComplete(true);
   };
 
   return (
@@ -21,13 +23,13 @@ const Layout = ({ children }) => {
       <InitialOverlay onComplete={handleOverlayComplete} />
       <FragmentCursor />
 
-      <Navigation 
+     {overlayComplete && <Navigation 
         isSoundEnabled={isSoundEnabled}
         onSoundToggle={toggleSound}
-      />
+      />}
       
       <main className="main-content" role="main">
-        {children}
+        {React.cloneElement(children, { overlayComplete })}
       </main>
       
       <footer className="footer-container" role="contentinfo">

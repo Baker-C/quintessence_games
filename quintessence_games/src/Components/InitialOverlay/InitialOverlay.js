@@ -28,14 +28,16 @@ const InitialOverlay = ({ onComplete }) => {
   };
 
   const handleExitComplete = () => {
-    // Re-enable scrolling when exit animation completes
-    document.body.style.overflow = 'unset';
-    document.body.style.position = 'unset';
-    document.body.style.width = 'unset';
-    document.body.style.height = 'unset';
-    
-    if (onComplete) {
-      onComplete();
+    if (isExiting) {
+      // Re-enable scrolling when exit animation completes
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+      document.body.style.height = 'unset';
+      
+      if (onComplete) {
+        onComplete();
+      }
     }
   };
 
@@ -69,8 +71,7 @@ const InitialOverlay = ({ onComplete }) => {
               times: [0, 0.25, 0.75, 1]
             }
           } : {
-            duration: 1, 
-            delay: 0.5 
+            duration: 1
           }}
         >
           {initialOverlayCopy.enterText}
@@ -79,7 +80,7 @@ const InitialOverlay = ({ onComplete }) => {
         <motion.button
           className="cta-button"
           onClick={handleCtaClick}
-          initial={{ opacity: 0.5, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isExiting ? {
             opacity: [1, 0, 1, 0],
           } : {
@@ -93,7 +94,7 @@ const InitialOverlay = ({ onComplete }) => {
             }
           } : {
             duration: 0.8, 
-            delay: 0
+            delay: 1.4
           }}
           aria-label={initialOverlayCopy.ctaButton.ariaLabel}
         >

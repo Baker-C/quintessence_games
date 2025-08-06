@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './Hero.css';
 import heroCopy from '../../Copy/hero.js';
 
-const Hero = () => {
-  const [showTitle, setShowTitle] = useState(false);
+const Hero = ({ overlayComplete }) => {
   const [titleLetters, setTitleLetters] = useState([]);
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     // Generate random offsets for each letter
@@ -20,10 +21,15 @@ const Hero = () => {
       offsetX: (Math.random() - 0.5) * 180 // Random value between -90px and 90px
     }));
     setTitleLetters(letters);
-    
-    // Show title after a short delay
-    setTimeout(() => setShowTitle(true), 500);
   }, []);
+
+  // Trigger welcome animation when overlay is complete
+  useEffect(() => {
+    if (overlayComplete) {
+      setTimeout(() => setShowContent(true), 600);
+    }
+    console.log(`Overlay complete: ${overlayComplete}`);
+  }, [overlayComplete]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,14 +62,48 @@ const Hero = () => {
     }
   };
 
+  const scrollToHeroThreeQuarters = () => {
+    const heroSection = document.querySelector('.hero-container');
+    if (heroSection) {
+      const heroHeight = heroSection.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      // Calculate 3/4ths through the hero section
+      const threeQuartersPosition = (heroHeight - viewportHeight) * 0.75;
+      window.scrollTo({ 
+        top: threeQuartersPosition, 
+        behavior: 'smooth' 
+      });
+    }
+  };
+
+
   return (
     <div className="hero-container">
-      <motion.div
+      {showContent && <motion.div
         className="hero"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
+
+      {/* Welcome */}
+      <motion.button 
+        className="welcome-button"
+        onClick={scrollToHeroThreeQuarters}
+        aria-label="Quintessence Games - Return to top"
+        initial={{ opacity: 0, width: "0%" }}
+        animate={{ opacity: 1, width: "fit-content" }}
+        transition={{ 
+          duration: 2,
+          ease: "easeInOut",
+          delay: 1
+        }}
+      >
+        <div className="welcome-text">
+          Welcome to QGstudios
+        </div>
+      </motion.button>
+
       {/* Scroll-based title animation */}
       <div className="hero-title-container">
         {/* Growing square background */}
@@ -114,7 +154,10 @@ const Hero = () => {
         className="hero-tagline"
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ 
+          duration: 2, 
+          delay: .7
+        }}
       >
         <p className="tagline-text">{heroCopy.tagline}</p>
       </motion.div>
@@ -133,9 +176,13 @@ const Hero = () => {
           ↓
         </motion.button>
       )}
-      </motion.div>
+      </motion.div>}
     </div>
   );
+};
+
+Hero.propTypes = {
+  overlayComplete: PropTypes.bool
 };
 
 export default Hero;

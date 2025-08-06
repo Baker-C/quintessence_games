@@ -10,11 +10,10 @@
   pointer-events: none;
 }
 
-
 .nav-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 100%;
   padding: var(--spacing-lg) var(--spacing-sm);
   pointer-events: auto;
@@ -26,19 +25,10 @@
   border: none;
   cursor: pointer;
   padding: var(--spacing-xs);
-  border-radius: var(--border-radius-sm);
-}
-
-
-.nav-welcome {
-  font-family: var(--font-body);
-  font-size: var(--font-size-sm);
-  color: var(--text-primary);
-  opacity: 0.8;
-  font-weight: 300;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  overflow-x: hidden;
+  margin-top: 30%;
+  position: absolute;
+  top: 40%;
+  left: var(--spacing-sm);
 }
 
 .logo-qg {
@@ -48,6 +38,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   overflow-x: hidden;
+  width: 0;
 }
 
 /* Navigation Links */

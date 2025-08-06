@@ -1,16 +1,29 @@
 @import '../../Styles/variables.css';
 
-.welcome-text {
+
+/* Logo Section */
+.welcome-button {
+  background: none;
+  border: none;
+  cursor: pointer;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-logo);
-  font-size: var(--font-size-lg);
+  top: var(--spacing-xl);
+  left: 0;
+  width: fit-content;
+  height: fit-content;
+  text-wrap: nowrap;
+  z-index: 9000;
+  overflow: hidden;
+}
+
+
+.welcome-text {
+  font-family: var(--font-button);
+  font-size: var(--font-size-sm);
   color: var(--text-primary);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
   z-index: 10;
-  pointer-events: none;
+  padding: var(--spacing-md);
 }
 
 .hero-container {
@@ -353,4 +366,6 @@
     letter-spacing: 0.1em;
     opacity: 0.8;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    text-wrap: nowrap;
   }

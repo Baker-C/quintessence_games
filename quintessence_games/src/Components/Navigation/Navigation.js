@@ -37,13 +37,6 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ 
-      top: 0, 
-      behavior: 'smooth' 
-    });
-  };
-
   const scrollToHeroThreeQuarters = () => {
     const heroSection = document.querySelector('.hero-container');
     if (heroSection) {
@@ -62,27 +55,7 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
     <nav className="navigation-container" role="navigation" aria-label="Main navigation">
       <motion.div 
         className="nav-content"
-        initial={{ x: -240 }}
-        animate={{ x: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Logo */}
-        <motion.button 
-          className="top-button"
-          onClick={scrollToTop}
-          aria-label="Quintessence Games - Return to top"
-          animate={{ 
-            width: isInHero ? 'fit-content' : 0
-          }}
-          transition={{ 
-            duration: 0.5, 
-            ease: "easeInOut" 
-          }}
-        >
-          <div className="nav-welcome">
-            Welcome to QGstudios
-          </div>
-        </motion.button>
 
         {/* Logo */}
         <motion.button 
@@ -108,6 +81,9 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
           <motion.button
             className="sound-toggle"
             onClick={onSoundToggle}
+            initial={{ x: -240, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 2, ease: "easeInOut", delay: 1.5 }}
             aria-label={`Toggle sound ${isSoundEnabled ? 'off' : 'on'}`}
             aria-pressed={isSoundEnabled}
           >
@@ -126,6 +102,9 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
                 key={key}
                 className="nav-link"
                 onClick={() => scrollToSection(key)}
+                initial={{ x: -240, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 2, ease: "easeInOut", delay: (0.5 * (Object.keys(navigationCopy.links).indexOf(key) + 4)) }}
                 aria-label={`Navigate to ${label} section`}
               >
                 {label}
@@ -138,7 +117,9 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
             className="contact-button"
             onClick={() => scrollToSection('contact')}
             whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.1 }}
+            initial={{ x: -240, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 2, ease: "easeInOut", delay: 3 }}
             aria-label={navigationCopy.contactButton.ariaLabel}
           >
             {navigationCopy.contactButton.label}

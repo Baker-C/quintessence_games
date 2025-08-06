@@ -1,9 +1,9 @@
 // Initial Overlay copy definitions
 
 const initialOverlayCopy = {
-  enterText: 'Enter a world where emotions take shape.',
+  enterText: 'Explore a world where emotions take shape.',
   ctaButton: {
-    label: 'Reawaken Yourself',
+    label: 'Reawaken Your Gaming Passion',
     ariaLabel: 'Begin your journey with Quintessence Games'
   }
 };

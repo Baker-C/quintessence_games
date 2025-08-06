@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import HeroSection from './Components/Hero/Hero';
 import IntroductionSection from './Components/Sections/IntroductionSection';
 import GenesisSection from './Components/Sections/GenesisSection';
@@ -10,7 +11,7 @@ import TeamSection from './Components/Sections/TeamSection';
 import ContactSection from './Components/Sections/ContactSection';
 import './App.css';
 
-function App() {
+function App({ overlayComplete }) {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
 
   const handleToggleApplication = () => {
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <HeroSection />
+      <HeroSection overlayComplete={overlayComplete} />
       <IntroductionSection />
       <GenesisSection />
       <ValuesSection />
@@ -37,5 +38,9 @@ function App() {
     </div>
   );
 }
+
+App.propTypes = {
+  overlayComplete: PropTypes.bool
+};
 
 export default App;
