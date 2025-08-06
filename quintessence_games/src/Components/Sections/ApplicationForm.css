@@ -104,6 +104,12 @@
   font-size: 12px;
 }
 
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
 .submit-button {
   background: none;
   border: none;
@@ -112,8 +118,7 @@
   font-size: var(--font-size-base);
   padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;
-  margin-top: var(--spacing-lg);
-  width: 100%;
+  flex: 1;
   background-color: var(--tertiary-bg);
   border-radius: var(--border-radius-sm);
   transition: background-color var(--transition-fast);
@@ -128,6 +133,30 @@
   outline-offset: 2px;
 }
 
+.cancel-button {
+  background: none;
+  border: 1px solid var(--tertiary-bg);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  flex: 1;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.cancel-button:hover {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.cancel-button:focus {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
   .form-row {
     grid-template-columns: 1fr;
@@ -136,5 +165,9 @@
   
   .section-heading {
     font-size: var(--font-size-lg);
+  }
+
+  .form-actions {
+    flex-direction: column;
   }
 }

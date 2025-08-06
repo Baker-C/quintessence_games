@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './ApplicationForm.css';
 
-const ApplicationForm = () => {
+const ApplicationForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -150,13 +151,26 @@ const ApplicationForm = () => {
             </label>
           </div>
 
-          <button type="submit" className="submit-button">
-            Submit Application
-          </button>
+          <div className="form-actions">
+            <button type="submit" className="submit-button">
+              Submit Application
+            </button>
+            <button 
+              type="button" 
+              className="cancel-button"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
+          </div>
         </motion.form>
       </div>
     </section>
   );
+};
+
+ApplicationForm.propTypes = {
+  onClose: PropTypes.func.isRequired
 };
 
 export default ApplicationForm;

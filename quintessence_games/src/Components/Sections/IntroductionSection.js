@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './GamesForSoulSection.css';
+import './IntroductionSection.css';
 import sectionsCopy from '../../Copy/sections';
 
-const GamesForSoulSection = () => {
-  const { gamesForSoul } = sectionsCopy;
+const IntroductionSection = () => {
+  const { introduction } = sectionsCopy;
 
   return (
-    <section className="games-for-soul-section section" id="about" aria-labelledby="games-for-soul-heading">
+    <section className="introduction-section section" id="about" aria-labelledby="introduction-heading">
       <div className="section-content">
         <div className="content-layout">
           {/* Background fog animation */}
@@ -57,36 +57,23 @@ const GamesForSoulSection = () => {
 
           <div className="text-content">
             <motion.div
-              className="subtitle"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.4 }}
-            >
-              {gamesForSoul.subtitle}
-            </motion.div>
-
-            <motion.h2
-              id="games-for-soul-heading"
-              className="section-heading"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              {gamesForSoul.heading}
-            </motion.h2>
-
-            <motion.div
               className="paragraph-block"
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              <p className="section-text">
-                {gamesForSoul.content}
-              </p>
+              {introduction.content.map((paragraph, index) => (
+                <p key={index} className="section-text">
+                  {
+                    (index == 0) ? 
+                    <p style={{ fontWeight: 'bold', fontSize: '1.5em', fontStyle: 'italic' }}>
+                      {paragraph}
+                    </p> : 
+                    paragraph
+                  }
+                </p>
+              ))}
             </motion.div>
           </div>
         </div>
@@ -95,4 +82,4 @@ const GamesForSoulSection = () => {
   );
 };
 
-export default GamesForSoulSection;
+export default IntroductionSection;

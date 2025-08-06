@@ -1,7 +1,6 @@
 @import '../../Styles/variables.css';
 
-.games-for-soul-section {
-  background-color: var(--secondary-bg);
+.introduction-section {
   position: relative;
   overflow: hidden;
 }
@@ -9,11 +8,11 @@
 .content-layout {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-xxl);
-  align-items: center;
-  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--nav-width);
+  padding-top: calc(var(--spacing-xxl) * 2);
+  padding-bottom: calc(var(--spacing-xxl) * 2);
 }
 
 /* Fog background */
@@ -63,32 +62,8 @@
 }
 
 /* Text content */
-.text-content {
-  grid-column: 1;
-  padding-right: var(--spacing-xl);
-}
-
-.subtitle {
-  font-family: var(--font-body);
-  font-size: var(--font-size-base);
-  color: var(--accent-gold);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: var(--spacing-md);
-  font-weight: 500;
-}
-
-.section-heading {
-  font-family: var(--font-title);
-  font-size: var(--font-size-xl);
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-lg);
-  line-height: 1.1;
-}
-
 .paragraph-block {
-  grid-column: 2;
-  padding-left: var(--spacing-xl);
+  padding-left: var(--spacing-lg);
   position: relative;
 }
 
@@ -110,29 +85,30 @@
 
 .section-text {
   font-family: var(--font-body);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   color: var(--text-primary);
   line-height: 1.7;
   opacity: 0.9;
   margin: 0;
+  text-indent: 2em;
+  margin-bottom: var(--spacing-md);
+}
+
+.section-text:first-child {
+  margin-top: 0;
+}
+
+.section-text:last-child {
+  margin-bottom: 0;
 }
 
 /* Responsive design */
 @media (max-width: 1024px) {
   .content-layout {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
-    text-align: center;
-  }
-  
-  .text-content {
-    grid-column: 1;
-    padding-right: 0;
-    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-md);
   }
   
   .paragraph-block {
-    grid-column: 1;
     padding-left: 0;
   }
   

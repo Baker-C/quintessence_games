@@ -18,10 +18,13 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   box-shadow: 0 0 6px var(--accent-gold);
+  outline: 0px solid var(--primary-bg);
+  transition: outline var(--transition-fast);
 }
 
 .cursor-fragment.shaking {
   animation: fragmentShake 0.07s ease-in-out infinite alternate;
+  outline: 1px solid var(--primary-bg);
 }
 
 @keyframes fragmentShake {

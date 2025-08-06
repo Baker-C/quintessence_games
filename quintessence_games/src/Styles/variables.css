@@ -14,6 +14,7 @@
   --font-body: 'Inter', 'Space Grotesk', 'DM Sans', sans-serif;
   
   /* Font Sizes */
+  --font-size-xxl: 5rem;
   --font-size-xl: 3.5rem;
   --font-size-lg: 2.5rem;
   --font-size-md: 1.5rem;
@@ -32,7 +33,7 @@
   
   /* Layout */
   --nav-width: 240px;
-  --content-max-width: 1200px;
+  --content-max-width: 1600px;
   
   /* Transitions */
   --transition-slow: 0.8s ease-in-out;

@@ -1,10 +1,13 @@
 // Section copy definitions
 
 const sectionsCopy = {
-  gamesForSoul: {
+  introduction: {
     subtitle: 'What Drives Us',
-    heading: 'Games for the Soul',
-    content: 'We believe that games are more than entertainment—they are vessels for emotional exploration, windows into the human condition, and bridges between hearts. At Quintessence Games, we craft experiences that resonate with the deepest parts of who we are, creating worlds where players don\'t just play, but feel, grow, and discover.'
+    content: [
+      '"We create games for the Soul."',
+      'This reflects our drive to craft emotional unforgettable gaming experiences for all players. We draw on our team\'s diverse perspectives to build heart-pounding action, chilling suspence, and powerful narratives that move the soul.',
+      'Our mission is to redefine what games can mean through innovation and connection with our players.'
+    ]
   },
   genesis: {
     subtitle: 'Where It Began',
@@ -13,8 +16,12 @@ const sectionsCopy = {
     imageAlt: 'Historic apartment in Corpus Christi where Quintessence Games was founded'
   },
   values: {
+    subtitle: 'Heart of the Studio',
     heading: 'Our Values',
-    content: 'Authenticity drives everything we do. We believe in honest storytelling, genuine emotion, and the power of vulnerability in art. Our games explore the complexity of human experience—fear, love, loss, hope—with the respect and depth these themes deserve. We are committed to creating safe spaces for both our team and our players to explore difficult emotions and find catharsis through interactive narrative.'
+    content: [
+      'Authenticity drives everything we do. We believe in honest storytelling, genuine emotion, and the power of vulnerability in art. Our games explore the complexity of human experience—fear, love, loss, hope—with the respect and depth these themes deserve.',
+      'We are committed to creating safe spaces for both our team and our players to explore difficult emotions and find catharsis through interactive narrative. Every story we tell is a bridge between hearts, connecting players to something deeper within themselves.'
+    ]
   },
   joinTeam: {
     heading: 'Join the Team',

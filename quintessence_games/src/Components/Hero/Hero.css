@@ -1,5 +1,17 @@
 @import '../../Styles/variables.css';
 
+.welcome-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-logo);
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  pointer-events: none;
+}
 
 .hero-container {
   position: relative;

@@ -1,7 +1,6 @@
 @import '../../Styles/variables.css';
 
 .values-section {
-  background-color: var(--values-bg);
   position: relative;
   overflow: hidden;
 }
@@ -153,10 +152,6 @@
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-  .values-section {
-    background-color: #800000;
-  }
-  
   .decoration-line {
     background: linear-gradient(
       90deg,

@@ -21,7 +21,7 @@
 }
 
 /* Logo Section */
-.logo-button {
+.top-button {
   background: none;
   border: none;
   cursor: pointer;
@@ -29,28 +29,25 @@
   border-radius: var(--border-radius-sm);
 }
 
-.logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-xs);
-}
 
-.logo-welcome {
+.nav-welcome {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   color: var(--text-primary);
   opacity: 0.8;
   font-weight: 300;
   letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 .logo-qg {
   font-family: var(--font-logo);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   color: var(--accent-gold);
   font-weight: 600;
   letter-spacing: 0.1em;
+  overflow-x: hidden;
 }
 
 /* Navigation Links */
@@ -122,9 +119,9 @@
 
 /* Contact Button */
 .contact-button {
-  background-color: transparent;
+  background-color: var(--accent-gold);
+  color: var(--primary-bg);
   border: 2px solid var(--accent-gold);
-  color: var(--accent-gold);
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: 500;
@@ -137,8 +134,8 @@
 }
 
 .contact-button:hover {
-  background-color: var(--accent-gold);
-  color: var(--primary-bg);
+  background-color: transparent;
+  color: var(--accent-gold);
 }
 
 .contact-button:focus {

@@ -2,7 +2,7 @@
 
 const heroCopy = {
   companyName: 'QUINTESSENCE  GAMES',
-  tagline: 'Where emotions take form'
+  tagline: 'Games for the Soul'
 };
 
 export default heroCopy;

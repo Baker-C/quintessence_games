@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './Navigation.css';
 import navigationCopy from '../../Copy/navigation';
 
 const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
+  const [isInHero, setIsInHero] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.hero-container');
+      if (heroSection) {
+        const heroRect = heroSection.getBoundingClientRect();
+        const isCurrentlyInHero = heroRect.bottom > (window.innerHeight / 2) && heroRect.top < (window.innerHeight / 2);
+        setIsInHero(isCurrentlyInHero);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+    // Map 'join' to 'jobs' section
+    const targetId = sectionId === 'join' ? 'jobs' : sectionId;
+    const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ 
         behavior: 'smooth',
@@ -31,19 +53,40 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Logo */}
-        <button 
-          className="logo-button"
+        <motion.button 
+          className="top-button"
           onClick={scrollToTop}
-          aria-label="Welcome to Quintessence Games - Return to top"
+          aria-label="Quintessence Games - Return to top"
+          animate={{ 
+            width: isInHero ? 'fit-content' : 0
+          }}
+          transition={{ 
+            duration: 0.5, 
+            ease: "easeInOut" 
+          }}
         >
-          <motion.div 
-            className="logo-container"
-          >
-            <div className="logo-welcome">Welcome to</div>
-            <div className="logo-qg">QG</div>
-          </motion.div>
-        </button>
+          <div className="nav-welcome">
+            Welcome to QGstudios
+          </div>
+        </motion.button>
 
+        {/* Logo */}
+        <motion.button 
+          className="top-button"
+          onClick={scrollToTop}
+          aria-label="Quintessence Games - Return to top"
+          animate={{ 
+            width: isInHero ? 0 : 'fit-content'
+          }}
+          transition={{ 
+            duration: 0.5, 
+            ease: "easeInOut" 
+          }}
+        >
+          <div className="logo-qg">
+            QG
+          </div>
+        </motion.button>
 
         {/* Bottom Section */}
         <div className="nav-bottom">

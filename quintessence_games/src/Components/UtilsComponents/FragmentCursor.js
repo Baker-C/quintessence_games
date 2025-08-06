@@ -64,7 +64,7 @@ const FragmentCursor = () => {
   // Generate cursor fragments
   const fragments = Array.from({ length: 4 }, (_, index) => {
     const angle = (index * 90) * (Math.PI / 180);
-    const distance = isHovering ? 3 : 8;
+    const distance = isHovering ? 2 : 8;
     const offsetX = Math.cos(angle) * distance;
     const offsetY = Math.sin(angle) * distance;
 

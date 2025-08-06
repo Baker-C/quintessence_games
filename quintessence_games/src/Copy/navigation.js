@@ -1,6 +1,7 @@
 // Navigation copy definitions
 
 const navigationCopy = {
+  welcome: 'Welcome to Quintessence Games',
   logo: 'Welcome to QG',
   links: {
     about: 'Information',

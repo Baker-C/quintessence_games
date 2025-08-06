@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import HeroSection from './Components/Hero/Hero';
-import GamesForSoulSection from './Components/Sections/GamesForSoulSection';
+import IntroductionSection from './Components/Sections/IntroductionSection';
 import GenesisSection from './Components/Sections/GenesisSection';
 import ValuesSection from './Components/Sections/ValuesSection';
 import JoinTeamSection from './Components/Sections/JoinTeamSection';
@@ -13,8 +13,8 @@ import './App.css';
 function App() {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
 
-  const handleOpenApplication = () => {
-    setShowApplicationForm(true);
+  const handleToggleApplication = () => {
+    setShowApplicationForm(prev => !prev);
   };
 
   const handleCloseApplication = () => {
@@ -24,17 +24,17 @@ function App() {
   return (
     <div className="app-container">
       <HeroSection />
-      <GamesForSoulSection />
+      <IntroductionSection />
       <GenesisSection />
       <ValuesSection />
       <TeamSection />
-      <JoinTeamSection onApplyClick={handleOpenApplication} />
-      <ConceptArtSection />
-      <ContactSection />
-      
+      <JoinTeamSection onApplyClick={handleToggleApplication} />
       {showApplicationForm && (
         <ApplicationForm onClose={handleCloseApplication} />
       )}
+      <ConceptArtSection />
+      <ContactSection />
+      
     </div>
   );
 }

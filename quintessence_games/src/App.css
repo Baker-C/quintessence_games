@@ -50,8 +50,8 @@ p {
 }
 
 .section {
-  padding: var(--spacing-xxl) var(--spacing-xl);
-  min-height: 100vh;
+  padding: calc(var(--spacing-xxl) * 2) var(--spacing-xxl) ;
+  min-height: 70vh;
   display: flex;
   align-items: center;
 }
