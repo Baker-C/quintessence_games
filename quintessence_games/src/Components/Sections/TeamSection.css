@@ -12,12 +12,34 @@
   margin-bottom: var(--spacing-xxl);
 }
 
+.subsection-heading {
+  font-family: var(--font-title);
+  font-size: var(--font-size-lg);
+  color: var(--accent-gold);
+  margin-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-xxl);
+  text-align: center;
+}
+
+.subsection-heading:first-of-type {
+  margin-top: 0;
+}
+
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--spacing-xl);
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--spacing-xxl);
+  padding: 0 var(--spacing-xxl);
+}
+
+.founders-grid {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.members-grid {
+  margin-bottom: 0;
 }
 
 .team-card {
@@ -32,6 +54,15 @@
   border-color: var(--accent-gold);
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.member-card {
+  /* Styles for team member cards without images */
+  text-align: center;
+}
+
+.member-card .member-info {
+  text-align: center;
 }
 
 .member-image {
@@ -67,8 +98,16 @@
   text-align: left;
 }
 
-.member-role {
+.member-name {
   font-family: var(--font-title);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+  font-weight: 600;
+}
+
+.member-role {
   font-size: var(--font-size-md);
   color: var(--accent-gold);
   margin-bottom: var(--spacing-sm);
@@ -92,6 +131,10 @@
   
   .section-heading {
     font-size: var(--font-size-lg);
+  }
+  
+  .subsection-heading {
+    font-size: var(--font-size-md);
   }
   
   .team-card {

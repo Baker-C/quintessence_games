@@ -32,28 +32,66 @@ const sectionsCopy = {
       engineering: 'Engineering', 
       design: 'Design',
       narrative: 'Narrative'
-    }
+    },
+    jobs: [
+      { title: 'Senior Narrative Designer', location: 'Remote', department: 'narrative' },
+      { title: '3D Environment Artist', location: 'Austin, TX', department: 'art' },
+      { title: 'Frontend Developer', location: 'Remote', department: 'engineering' },
+      { title: 'UI/UX Designer', location: 'Remote', department: 'design' },
+      { title: 'Technical Artist', location: 'Austin, TX', department: 'art' },
+      { title: 'Backend Engineer', location: 'Remote', department: 'engineering' }
+    ]
   },
   team: {
     heading: 'Meet the Team',
+    foundersHeading: 'Founders',
+    teamHeading: 'Team Members',
+    founders: [
+      {
+        name: 'Julio Aguilar',
+        role: 'CEO',
+        bio: 'Julio Aguilar is the founder, visionary, and creativedirector of Quintessence Games as well as a life-long gaming enthusiast.',
+        imageAlt: 'Portrait of Julio Aguilar, CEO and Founder'
+      },
+      {
+        name: 'Jonathan Hight',
+        role: 'COO',
+        bio: 'Jonathan Hight is an operations and productions expert with 20+ years in the industry working on AAA titles from some of the world\'s biggest studios.',
+        imageAlt: 'Portrait of Jonathan Hight, Chief Operating Officer'
+      },
+      {
+        name: 'Mitchell Potter',
+        role: 'CTO',
+        bio: 'Mitchell Potter is a technology visionary with 20+ years of game simulation and software engineering, ranging from AAA titles to major hardware companies.',
+        imageAlt: 'Portrait of Mitchell Potter, Chief Technology Officer'
+      },
+      {
+        name: 'Frankie Cruz',
+        role: 'CFO',
+        bio: 'Frankie Cruz is an investment and corporate finance expert in Mergers & Acquisitions and financial modeling with successful exit-stage experience.',
+        imageAlt: 'Portrait of Frankie Cruz, Chief Financial Officer'
+      }
+    ],
     members: [
       {
-        name: 'Ava Chen',
-        role: 'Senior Narrative Designer',
-        bio: 'Ava is a senior narrative designer with over 8 years of experience crafting emotionally resonant stories for interactive media. She specializes in character development and branching narratives that explore themes of identity and belonging.',
-        imageAlt: 'Portrait of Ava Chen, Senior Narrative Designer'
+        name: 'Sarah Chen',
+        role: 'Lead Game Designer',
+        bio: 'Passionate about creating immersive player experiences with over 8 years in game design and narrative development.'
       },
       {
-        name: 'Marcus Rodriguez',
-        role: 'Creative Director',
-        bio: 'Marcus is our creative director and co-founder, bringing a unique vision that blends horror aesthetics with deep emotional storytelling. His background in film and interactive media shapes our studio\'s distinctive voice.',
-        imageAlt: 'Portrait of Marcus Rodriguez, Creative Director'
+        name: 'Marcus Thompson',
+        role: 'Senior Developer',
+        bio: 'Full-stack engineer specializing in game engines and performance optimization with expertise in Unity and Unreal.'
       },
       {
-        name: 'Elena Vasquez',
-        role: 'Lead Technical Artist',
-        bio: 'Elena is a lead technical artist who bridges the gap between artistic vision and technical implementation. She specializes in creating atmospheric environments and innovative lighting systems that enhance emotional impact.',
-        imageAlt: 'Portrait of Elena Vasquez, Lead Technical Artist'
+        name: 'Elena Rodriguez',
+        role: 'Art Director',
+        bio: 'Visual storyteller with a background in concept art and 3D modeling, bringing worlds to life through stunning visuals.'
+      },
+      {
+        name: 'David Kim',
+        role: 'Sound Designer',
+        bio: 'Audio specialist creating immersive soundscapes and dynamic music that enhances emotional gameplay experiences.'
       }
     ]
   },

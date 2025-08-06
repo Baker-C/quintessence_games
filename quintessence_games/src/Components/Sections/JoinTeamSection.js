@@ -7,15 +7,21 @@ import sectionsCopy from '../../Copy/sections';
 const JoinTeamSection = ({ onApplyClick }) => {
   const { joinTeam } = sectionsCopy;
 
-  // Mock job data
-  const mockJobs = [
-    { title: 'Senior Narrative Designer', location: 'Remote', department: 'narrative' },
-    { title: '3D Environment Artist', location: 'Austin, TX', department: 'art' },
-    { title: 'Frontend Developer', location: 'Remote', department: 'engineering' },
-    { title: 'UI/UX Designer', location: 'Remote', department: 'design' },
-    { title: 'Technical Artist', location: 'Austin, TX', department: 'art' },
-    { title: 'Backend Engineer', location: 'Remote', department: 'engineering' }
-  ];
+  const handleApplyClick = () => {
+    // Open the modal first
+    onApplyClick();
+    
+    // Scroll to the application section after a short delay to let the modal render
+    setTimeout(() => {
+      const applicationSection = document.getElementById('application');
+      if (applicationSection) {
+        applicationSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
+  };
 
   return (
     <section className="join-team-section section" id="jobs" aria-labelledby="join-team-heading">
@@ -42,7 +48,7 @@ const JoinTeamSection = ({ onApplyClick }) => {
         </motion.p>
 
         <div className="jobs-list">
-          {mockJobs.map((job, index) => (
+          {joinTeam.jobs.map((job, index) => (
             <motion.div
               key={index}
               className="job-item"
@@ -69,7 +75,7 @@ const JoinTeamSection = ({ onApplyClick }) => {
         >
           <button 
             className="apply-cta-button"
-            onClick={onApplyClick}
+            onClick={handleApplyClick}
             aria-label="Apply for positions at Quintessence Games"
           >
             {joinTeam.cta}

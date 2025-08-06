@@ -114,7 +114,7 @@
   background: none;
   border: none;
   color: var(--text-primary);
-  font-family: var(--font-body);
+  font-family: var(--font-button);
   font-size: var(--font-size-base);
   padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;
@@ -137,7 +137,7 @@
   background: none;
   border: 1px solid var(--tertiary-bg);
   color: var(--text-secondary);
-  font-family: var(--font-body);
+  font-family: var(--font-button);
   font-size: var(--font-size-base);
   padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;

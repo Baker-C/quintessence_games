@@ -10,51 +10,6 @@ const IntroductionSection = () => {
     <section className="introduction-section section" id="about" aria-labelledby="introduction-heading">
       <div className="section-content">
         <div className="content-layout">
-          {/* Background fog animation */}
-          <div className="fog-background" aria-hidden="true">
-            <motion.div
-              className="fog-layer fog-1"
-              animate={{
-                x: [0, 30, 0],
-                y: [0, -20, 0],
-                opacity: [0.3, 0.5, 0.3]
-              }}
-              transition={{
-                duration: 15,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div
-              className="fog-layer fog-2"
-              animate={{
-                x: [0, -25, 0],
-                y: [0, 15, 0],
-                opacity: [0.2, 0.4, 0.2]
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 5
-              }}
-            />
-            <motion.div
-              className="fog-layer fog-3"
-              animate={{
-                x: [0, 20, 0],
-                y: [0, -10, 0],
-                opacity: [0.1, 0.3, 0.1]
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 10
-              }}
-            />
-          </div>
-
           <div className="text-content">
             <motion.div
               className="paragraph-block"

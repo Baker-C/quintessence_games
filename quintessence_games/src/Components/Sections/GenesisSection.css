@@ -1,7 +1,7 @@
 @import '../../Styles/variables.css';
 
 .genesis-section {
-  background-color: var(--primary-bg);
+  background-color: var(--secondary-bg);
   position: relative;
   overflow: hidden;
 }

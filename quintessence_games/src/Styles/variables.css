@@ -6,12 +6,12 @@
   --tertiary-bg: #222222;
   --accent-gold: #C2B280;
   --text-primary: #FFFFFF;
-  --values-bg: #8B2635; /* Warm reddish tone */
   
   /* Typography */
   --font-title: 'Michroma', 'Arial Black', sans-serif;
   --font-logo: 'Orbitron', 'Arial', sans-serif;
-  --font-body: 'Inter', 'Space Grotesk', 'DM Sans', sans-serif;
+  --font-body: 'Red Hat Display', 'Inter', sans-serif;
+  --font-button: 'Intel One Mono', 'monospace', sans-serif;
   
   /* Font Sizes */
   --font-size-xxl: 5rem;

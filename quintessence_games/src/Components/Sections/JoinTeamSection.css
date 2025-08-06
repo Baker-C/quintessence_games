@@ -68,7 +68,7 @@
   background-color: transparent;
   border: 2px solid var(--accent-gold);
   color: var(--accent-gold);
-  font-family: var(--font-body);
+  font-family: var(--font-button);
   font-size: var(--font-size-md);
   font-weight: 500;
   padding: var(--spacing-md) var(--spacing-xl);

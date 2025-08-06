@@ -34,7 +34,6 @@ function App() {
       )}
       <ConceptArtSection />
       <ContactSection />
-      
     </div>
   );
 }

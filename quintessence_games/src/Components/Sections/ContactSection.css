@@ -50,7 +50,7 @@
   background: none;
   border: none;
   color: var(--text-primary);
-  font-family: var(--font-body);
+  font-family: var(--font-button);
   font-size: var(--font-size-base);
   padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;
