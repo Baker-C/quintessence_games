@@ -78,15 +78,31 @@ const Hero = () => {
           {titleLetters.map((letterObj) => {
             // Calculate progress that reaches full convergence at 75% scroll
             const convergenceProgress = Math.min(1, scrollProgress / 0.75);
+            const hasConverged = convergenceProgress >= 1;
+            
+            // Calculate opacity: starts at 40% (0.4) and reaches 100% (1.0) as user scrolls
+            const opacity = 0.4 + (scrollProgress * 0.6);
+            
             return (
               <motion.span
                 key={letterObj.id}
-                className="title-letter"
+                className={`title-letter ${hasConverged ? 'glitch' : ''}`}
                 style={{
-                  transform: `translate(${letterObj.offsetX * (1 - convergenceProgress)}px, ${letterObj.offsetY * (1 - convergenceProgress)}vh)` // Letters converge at 75% scroll progress
+                  transform: `translate(${letterObj.offsetX * (1 - convergenceProgress)}px, ${letterObj.offsetY * (1 - convergenceProgress)}vh)`, // Letters converge at 75% scroll progress
+                  opacity: opacity
                 }}
               >
-                {letterObj.letter === ' ' ? '\u00A0' : letterObj.letter}
+                {hasConverged ? (
+                  // Create multiple lines for glitch effect when converged
+                  Array.from({ length: 5 }, (_, index) => (
+                    <span key={index} className="line">
+                      {letterObj.letter === ' ' ? '\u00A0' : letterObj.letter}
+                    </span>
+                  ))
+                ) : (
+                  // Normal letter display during convergence
+                  letterObj.letter === ' ' ? '\u00A0' : letterObj.letter
+                )}
               </motion.span>
             );
           })}
