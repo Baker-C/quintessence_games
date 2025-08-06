@@ -27,12 +27,12 @@ function App() {
       <IntroductionSection />
       <GenesisSection />
       <ValuesSection />
+      <ConceptArtSection />
       <TeamSection />
       <JoinTeamSection onApplyClick={handleToggleApplication} />
       {showApplicationForm && (
         <ApplicationForm onClose={handleCloseApplication} />
       )}
-      <ConceptArtSection />
       <ContactSection />
     </div>
   );

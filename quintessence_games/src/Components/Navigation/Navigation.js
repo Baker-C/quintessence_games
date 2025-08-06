@@ -44,6 +44,20 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
     });
   };
 
+  const scrollToHeroThreeQuarters = () => {
+    const heroSection = document.querySelector('.hero-container');
+    if (heroSection) {
+      const heroHeight = heroSection.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      // Calculate 3/4ths through the hero section
+      const threeQuartersPosition = (heroHeight - viewportHeight) * 0.75;
+      window.scrollTo({ 
+        top: threeQuartersPosition, 
+        behavior: 'smooth' 
+      });
+    }
+  };
+
   return (
     <nav className="navigation-container" role="navigation" aria-label="Main navigation">
       <motion.div 
@@ -73,8 +87,8 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
         {/* Logo */}
         <motion.button 
           className="top-button"
-          onClick={scrollToTop}
-          aria-label="Quintessence Games - Return to top"
+          onClick={scrollToHeroThreeQuarters}
+          aria-label="Quintessence Games - Scroll to hero section"
           animate={{ 
             width: isInHero ? 0 : 'fit-content'
           }}

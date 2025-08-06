@@ -6,12 +6,10 @@
   overflow: hidden;
 }
 
-.split-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-xxl);
-  align-items: center;
-  margin-top: var(--spacing-xl);
+/* Text Container */
+.text-container {
+  padding-left: var(--spacing-xl);
+  text-align: left;
 }
 
 .subtitle {
@@ -22,9 +20,10 @@
   letter-spacing: 2px;
   margin-bottom: var(--spacing-md);
   font-weight: 500;
+  text-align: left;
 }
 
-.section-heading {
+.genesis-heading {
   font-family: var(--font-title);
   font-size: var(--font-size-xl);
   color: var(--text-primary);
@@ -32,49 +31,33 @@
   line-height: 1.1;
 }
 
-/* Image Container */
-.image-container {
-  position: relative;
-  aspect-ratio: 4/3;
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  background-color: var(--tertiary-bg);
+
+.genesis-align {
+  text-align: right;
 }
 
-.apartment-image {
-  width: 100%;
-  height: 100%;
+/* Text content */
+.genesis-block {
+  padding-right: var(--spacing-lg);
   position: relative;
+}
+
+.genesis-block::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
   background: linear-gradient(
-    135deg,
-    rgba(194, 178, 128, 0.1) 0%,
-    rgba(26, 26, 26, 0.8) 50%,
-    rgba(194, 178, 128, 0.05) 100%
+    to bottom,
+    transparent 0%,
+    var(--accent-gold) 20%,
+    var(--accent-gold) 80%,
+    transparent 100%
   );
 }
 
-.image-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
-
-.placeholder-text {
-  font-family: var(--font-title);
-  font-size: var(--font-size-lg);
-  color: var(--text-primary);
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-.placeholder-subtext {
-  font-size: var(--font-size-base);
-  color: var(--accent-gold);
-  font-style: italic;
-  margin-top: var(--spacing-xs);
-  display: block;
-}
 
 /* VHS/Static Effects */
 .static-overlay {
@@ -176,11 +159,6 @@
 
 /* Responsive design */
 @media (max-width: 1024px) {
-  .split-layout {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-xl);
-  }
-  
   .text-container {
     padding-left: 0;
     text-align: center;
@@ -193,7 +171,7 @@
 }
 
 @media (max-width: 768px) {
-  .section-heading {
+  .genesis-heading {
     font-size: var(--font-size-lg);
   }
   

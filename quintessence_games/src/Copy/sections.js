@@ -12,8 +12,10 @@ const sectionsCopy = {
   genesis: {
     subtitle: 'Where It Began',
     heading: 'Genesis',
-    content: 'It started in a small apartment in Corpus Christi, where late nights and passionate conversations about storytelling gave birth to something extraordinary. Two dreamers with a shared vision: to create games that matter, games that leave lasting impressions on the soul. From those humble beginnings, Quintessence Games emerged as a beacon for meaningful interactive experiences.',
-    imageAlt: 'Historic apartment in Corpus Christi where Quintessence Games was founded'
+    content: [
+      'It started in a small apartment in Corpus Christi, where late nights and passionate conversations about storytelling gave birth to something extraordinary.',
+      'Two dreamers with a shared vision: to create games that matter, games that leave lasting impressions on the soul.'
+    ]
   },
   values: {
     subtitle: 'Heart of the Studio',

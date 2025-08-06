@@ -6,7 +6,7 @@
   left: 0;
   width: var(--nav-width);
   height: 100vh;
-  z-index: 200;
+  z-index: var(--z-nav);
   pointer-events: none;
 }
 

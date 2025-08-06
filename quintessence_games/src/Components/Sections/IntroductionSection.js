@@ -12,7 +12,7 @@ const IntroductionSection = () => {
         <div className="content-layout">
           <div className="text-content">
             <motion.div
-              className="paragraph-block"
+              className="introduction-block"
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.6 }}

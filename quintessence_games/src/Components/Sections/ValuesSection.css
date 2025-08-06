@@ -31,14 +31,28 @@
   z-index: 2;
 }
 
-.values-text {
-  font-family: var(--font-body);
-  font-size: var(--font-size-md);
-  color: var(--text-primary);
-  line-height: 1.7;
-  margin: 0;
-  opacity: 0.95;
+/* Text content */
+.values-block {
+  padding-left: var(--spacing-lg);
+  position: relative;
 }
+
+.values-block::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent-gold) 20%,
+    var(--accent-gold) 80%,
+    transparent 100%
+  );
+}
+
 
 /* Decorative elements */
 .values-decoration {

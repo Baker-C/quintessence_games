@@ -19,7 +19,7 @@
   background-color: var(--primary-bg);
   border-top: 1px solid var(--tertiary-bg);
   padding: var(--spacing-sm);
-  z-index: 300;
+  z-index: var(--z-footer);
   width: 100%;
 }
 
@@ -34,11 +34,6 @@
 
 .footer-content span {
   white-space: nowrap;
-}
-
-/* Ensure content doesn't get hidden behind footer */
-.main-content {
-  padding-bottom: 60px;
 }
 
 /* Accessibility improvements */

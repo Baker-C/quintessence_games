@@ -41,6 +41,7 @@
   --transition-fast: 0.3s ease-in-out;
   
   /* Z-index layers */
+  --z-footer: 100;
   --z-nav: 1000;
   --z-overlay: 2000;
   --z-modal: 9998;
