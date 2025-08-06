@@ -6,7 +6,7 @@ import navigationCopy from '../../Copy/navigation';
 
 const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
   const [isInHero, setIsInHero] = useState(true);
-
+  
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.querySelector('.hero-container');
@@ -62,6 +62,7 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
           className="top-button"
           onClick={scrollToHeroThreeQuarters}
           aria-label="Quintessence Games - Scroll to hero section"
+          initial={{ width: 0 }}
           animate={{ 
             width: isInHero ? 0 : 'fit-content'
           }}
