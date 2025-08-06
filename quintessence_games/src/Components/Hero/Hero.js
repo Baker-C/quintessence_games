@@ -9,6 +9,8 @@ const Hero = ({ overlayComplete }) => {
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showContent, setShowContent] = useState(false);
+  const [isAtThreeQuarters, setIsAtThreeQuarters] = useState(false);
+
 
   useEffect(() => {
     // Generate random offsets for each letter
@@ -26,7 +28,11 @@ const Hero = ({ overlayComplete }) => {
   // Trigger welcome animation when overlay is complete
   useEffect(() => {
     if (overlayComplete) {
-      setTimeout(() => setShowContent(true), 600);
+      setTimeout(() => {
+        setShowContent(true);
+        setShowContinueButton(true); // Show button when content shows
+        console.log('Content and button should now be visible');
+      }, 600);
     }
     console.log(`Overlay complete: ${overlayComplete}`);
   }, [overlayComplete]);
@@ -47,13 +53,26 @@ const Hero = ({ overlayComplete }) => {
       const progress = Math.min(1, scrolledPast / (containerHeight - viewportHeight));
       setScrollProgress(progress);
       
-      // Show continue button when 75% through the container
-      setShowContinueButton(progress >= 0.75);
+      // Update three-quarters state
+      setIsAtThreeQuarters(progress >= 0.75);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleContinueClick = () => {
+    if (isAtThreeQuarters) {
+      // If already at 3/4, scroll to the information section
+      const nextSection = document.getElementById('about');
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If not at 3/4, scroll to 3/4 of hero section
+      scrollToHeroThreeQuarters();
+    }
+  };
 
   const scrollToNextSection = () => {
     const nextSection = document.getElementById('about');
@@ -131,6 +150,13 @@ const Hero = ({ overlayComplete }) => {
                   transform: `translate(${letterObj.offsetX * (1 - convergenceProgress)}px, ${letterObj.offsetY * (1 - convergenceProgress)}vh)`, // Letters converge at 75% scroll progress
                   opacity: opacity
                 }}
+                initial={{ opacity: 0}}
+                animate={{ opacity: 1}}
+                transition={{ 
+                  duration: 1,
+                  ease: "easeInOut",
+                  delay: Math.random() * 2
+                }}
               >
                 {hasConverged ? (
                   // Create multiple lines for glitch effect when converged
@@ -164,14 +190,14 @@ const Hero = ({ overlayComplete }) => {
 
       {showContinueButton && (
         <motion.button
-          className="continue-button"
-          onClick={scrollToNextSection}
+          className={`continue-button bobbing`}
+          onClick={handleContinueClick}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 3.5 }}
           whileHover={{ y: -5 }}
-          aria-label="Continue to next section"
+          aria-label={isAtThreeQuarters ? "Continue to information section" : "Scroll down in hero section"}
         >
           ↓
         </motion.button>
