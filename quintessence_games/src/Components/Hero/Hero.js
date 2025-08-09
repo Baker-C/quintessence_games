@@ -13,16 +13,28 @@ const Hero = ({ overlayComplete }) => {
 
 
   useEffect(() => {
-    // Generate random offsets for each letter
-    const letters = heroCopy.companyName.split('').map((letter, index) => ({
+    // Generate random offsets for each letter for each word
+    const wordOneLetters = heroCopy.titleWordOne.split('').map((letter, index) => ({
+      word: 1,
       letter,
-      id: index,
+      id: `w1-${index}`,
       offsetY: Math.random() > 0.5 
-        ? 5 + Math.random() * 27.5  // Random value between 5vh and 32.5vh (positive)
-        : -5 - Math.random() * 27.5, // Random value between -5vh and -32.5vh (negative)
-      offsetX: (Math.random() - 0.5) * 180 // Random value between -90px and 90px
+        ? 5 + Math.random() * 27.5
+        : -5 - Math.random() * 27.5,
+      offsetX: (Math.random() - 0.5) * 180
     }));
-    setTitleLetters(letters);
+
+    const wordTwoLetters = heroCopy.titleWordTwo.split('').map((letter, index) => ({
+      word: 2,
+      letter,
+      id: `w2-${index}`,
+      offsetY: Math.random() > 0.5 
+        ? 5 + Math.random() * 27.5
+        : -5 - Math.random() * 27.5,
+      offsetX: (Math.random() - 0.5) * 180
+    }));
+
+    setTitleLetters([...wordOneLetters, ...wordTwoLetters]);
   }, []);
 
   // Trigger welcome animation when overlay is complete
@@ -61,6 +73,17 @@ const Hero = ({ overlayComplete }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Auto-scroll to 3/4 of the hero after 6 seconds once content is visible
+  useEffect(() => {
+    if (!showContent || isAtThreeQuarters) return;
+    const timer = setTimeout(() => {
+      if (!isAtThreeQuarters) {
+        scrollToHeroThreeQuarters();
+      }
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, [showContent, isAtThreeQuarters]);
+
   const handleContinueClick = () => {
     if (isAtThreeQuarters) {
       // If already at 3/4, scroll to the information section
@@ -87,7 +110,7 @@ const Hero = ({ overlayComplete }) => {
       const heroHeight = heroSection.offsetHeight;
       const viewportHeight = window.innerHeight;
       // Calculate 3/4ths through the hero section
-      const threeQuartersPosition = (heroHeight - viewportHeight) * 0.75;
+      const threeQuartersPosition = ((heroHeight - viewportHeight) * 0.75) + 20;
       window.scrollTo({ 
         top: threeQuartersPosition, 
         behavior: 'smooth' 
@@ -133,8 +156,9 @@ const Hero = ({ overlayComplete }) => {
           }}
         />
         
-        <div className="title-letters-wrapper">
-          {titleLetters.map((letterObj) => {
+        <div className="title-container">
+          <div className="title-letters-wrapper word-one">
+          {titleLetters.filter(l => l.word === 1).map((letterObj) => {
             // Calculate progress that reaches full convergence at 75% scroll
             const convergenceProgress = Math.min(1, scrollProgress / 0.75);
             const hasConverged = convergenceProgress >= 1;
@@ -172,6 +196,37 @@ const Hero = ({ overlayComplete }) => {
               </motion.span>
             );
           })}
+          </div>
+          <div className="title-letters-wrapper word-two">
+          {titleLetters.filter(l => l.word === 2).map((letterObj) => {
+            const convergenceProgress = Math.min(1, scrollProgress / 0.75);
+            const hasConverged = convergenceProgress >= 1;
+            const opacity = 0.4 + (scrollProgress * 0.6);
+            return (
+              <motion.span
+                key={letterObj.id}
+                className={`title-letter ${hasConverged ? 'glitch' : ''}`}
+                style={{
+                  transform: `translate(${letterObj.offsetX * (1 - convergenceProgress)}px, ${letterObj.offsetY * (1 - convergenceProgress)}vh)`,
+                  opacity: opacity
+                }}
+                initial={{ opacity: 0}}
+                animate={{ opacity: 1}}
+                transition={{ duration: 1, ease: "easeInOut", delay: Math.random() * 2 }}
+              >
+                {hasConverged ? (
+                  Array.from({ length: 5 }, (_, index) => (
+                    <span key={index} className="line">
+                      {letterObj.letter === ' ' ? '\u00A0' : letterObj.letter}
+                    </span>
+                  ))
+                ) : (
+                  letterObj.letter === ' ' ? '\u00A0' : letterObj.letter
+                )}
+              </motion.span>
+            );
+          })}
+          </div>
         </div>
       </div>
 

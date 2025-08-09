@@ -1,7 +1,8 @@
 // Hero copy definitions
 
 const heroCopy = {
-  companyName: 'QUINTESSENCE  GAMES',
+  titleWordOne: 'QUINTESSENCE',
+  titleWordTwo: 'GAMES',
   tagline: 'Games for the Soul'
 };
 

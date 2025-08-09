@@ -65,6 +65,40 @@
   z-index: 2; /* Above the growing square */
 }
 
+/* New container to place the two words side-by-side */
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px; /* Small gap between words */
+  width: fit-content;
+  height: fit-content;
+}
+
+.title-letters-wrapper.word-one,
+.title-letters-wrapper.word-two {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: fit-content;
+  height: fit-content;
+}
+
+/* Stack words on tablet/phone */
+@media (max-width: 1500px) {
+  .title-container {
+    flex-direction: column;
+    gap: 0.75ch; /* Slightly larger gap between stacked words on tablet */
+    width: fit-content;
+    height: fit-content;
+  }
+  /* Reduce title font size starting at tablet */
+  .title-letter {
+    font-size: var(--font-size-xl);
+  }
+}
+
 .growing-square {
   position: absolute;
   top: 50%;
@@ -331,7 +365,7 @@
   }
   
   /* Responsive adjustments */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .hero-tagline {
       bottom: 2rem;
       right: 2rem;
@@ -342,7 +376,11 @@
     }
     
     .title-letter {
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-lg);
+    }
+
+    .continue-button {
+      bottom: 0;
     }
   }
   
