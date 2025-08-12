@@ -60,37 +60,7 @@ const TeamSection = () => {
           ))}
         </div>
 
-        {/* Team Members Section */}
-        <motion.h3
-          className="subsection-heading"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          {team.teamHeading}
-        </motion.h3>
-
-        <div className="team-grid members-grid">
-          {team.members.map((member, index) => (
-            <motion.div
-              key={index}
-              className="team-card member-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-            >
-              <div className="member-info">
-                <h4 className="member-name">{member.name}</h4>
-                <h5 className="member-role">{member.role}</h5>
-                <p className="member-bio">
-                  {member.bio}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+  {/* Removed non-founder team members per request */}
       </div>
     </section>
   );

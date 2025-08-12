@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './Navigation.css';
 import navigationCopy from '../../Copy/navigation';
 
-const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
-  const [isInHero, setIsInHero] = useState(true);
-  
+const Navigation = ({ isSoundEnabled, onSoundToggle, isHeroComplete }) => {
+  const [showLogo, setShowLogo] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.querySelector('.hero-container');
-      if (heroSection) {
-        const heroRect = heroSection.getBoundingClientRect();
-        const isCurrentlyInHero = heroRect.bottom > (window.innerHeight / 2) && heroRect.top < (window.innerHeight / 2);
-        setIsInHero(isCurrentlyInHero);
+      const heroContainer = document.querySelector('.hero-container');
+      if (!heroContainer) return;
+      const heroHeight = heroContainer.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const totalScrollableHero = heroHeight - viewportHeight; // portion where sticky hero animates
+      if (totalScrollableHero <= 0) {
+        setShowLogo(true);
+        return;
       }
+      const scrolled = window.scrollY;
+      const progress = Math.min(1, Math.max(0, scrolled / totalScrollableHero));
+      // Show once we've passed halfway OR fully exited hero
+      setShowLogo(progress >= 0.5 || progress >= 1);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // initial
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -37,17 +40,11 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
     }
   };
 
-  const scrollToHeroThreeQuarters = () => {
-    const heroSection = document.querySelector('.hero-container');
-    if (heroSection) {
-      const heroHeight = heroSection.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      // Calculate 3/4ths through the hero section
-      const threeQuartersPosition = (heroHeight - viewportHeight) * 0.75;
-      window.scrollTo({ 
-        top: threeQuartersPosition, 
-        behavior: 'smooth' 
-      });
+  const scrollToNextSection = () => {
+    // Always scroll to the next section after hero
+    const nextSection = document.getElementById('about');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -60,16 +57,18 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
         {/* Logo */}
         <motion.button 
           className="top-button"
-          onClick={scrollToHeroThreeQuarters}
-          aria-label="Quintessence Games - Scroll to hero section"
-          initial={{ width: 0 }}
+          onClick={scrollToNextSection}
+          aria-label="Quintessence Games - Continue to next section"
+          initial={{ width: 0, opacity: 0 }}
           animate={{ 
-            width: isInHero ? 0 : 'fit-content'
+            width: showLogo ? 'fit-content' : 0,
+            opacity: showLogo ? 1 : 0
           }}
           transition={{ 
             duration: 0.5, 
             ease: "easeInOut" 
           }}
+          disabled={!showLogo}
         >
           <div className="logo-qg">
             QG
@@ -133,7 +132,8 @@ const Navigation = ({ isSoundEnabled, onSoundToggle }) => {
 
 Navigation.propTypes = {
   isSoundEnabled: PropTypes.bool.isRequired,
-  onSoundToggle: PropTypes.func.isRequired
+  onSoundToggle: PropTypes.func.isRequired,
+  isHeroComplete: PropTypes.bool.isRequired
 };
 
 export default Navigation;

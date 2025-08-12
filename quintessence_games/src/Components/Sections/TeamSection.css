@@ -1,14 +1,30 @@
 @import '../../Styles/variables.css';
 
 .team-section {
-  background-color: var(--primary-bg);
+  position: relative;
+  background: var(--primary-bg);
   text-align: center;
+  overflow: hidden;
 }
+
+.team-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,0.03) 0%, transparent 60%),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.025) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.team-section .section-content { position: relative; z-index: 1; }
 
 .section-heading {
   font-family: var(--font-title);
   font-size: var(--font-size-xl);
-  color: var(--text-primary);
+  color: var(--accent-gold);
   margin-bottom: var(--spacing-xxl);
 }
 

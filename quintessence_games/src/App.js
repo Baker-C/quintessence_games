@@ -11,7 +11,7 @@ import TeamSection from './Components/Sections/TeamSection';
 import ContactSection from './Components/Sections/ContactSection';
 import './App.css';
 
-function App({ overlayComplete }) {
+function App({ overlayComplete, onHeroComplete }) {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
 
   const handleToggleApplication = () => {
@@ -24,12 +24,12 @@ function App({ overlayComplete }) {
 
   return (
     <div className="app-container">
-      <HeroSection overlayComplete={overlayComplete} />
+      <HeroSection overlayComplete={overlayComplete} onHeroComplete={onHeroComplete} />
       <IntroductionSection />
-      <GenesisSection />
-      <ValuesSection />
-      <ConceptArtSection />
-      <TeamSection />
+  <GenesisSection />
+  <TeamSection />
+  <ValuesSection />
+  <ConceptArtSection />
       <JoinTeamSection onApplyClick={handleToggleApplication} />
       {showApplicationForm && (
         <ApplicationForm onClose={handleCloseApplication} />
@@ -40,7 +40,8 @@ function App({ overlayComplete }) {
 }
 
 App.propTypes = {
-  overlayComplete: PropTypes.bool
+  overlayComplete: PropTypes.bool,
+  onHeroComplete: PropTypes.func
 };
 
 export default App;

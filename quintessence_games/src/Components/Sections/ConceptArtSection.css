@@ -1,14 +1,31 @@
 @import '../../Styles/variables.css';
 
 .concept-art-section {
-  background-color: var(--secondary-bg);
+  position: relative;
+  background: var(--primary-bg);
   text-align: center;
+  overflow: hidden;
 }
+
+/* Subtle vignette / gradient for depth */
+.concept-art-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.03) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.025) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.concept-art-section .section-content { position: relative; z-index: 1; }
 
 .section-heading {
   font-family: var(--font-title);
   font-size: var(--font-size-xl);
-  color: var(--text-primary);
+  color: var(--accent-gold);
   margin-bottom: var(--spacing-xxl);
 }
 
@@ -26,11 +43,8 @@
 
 .concept-thumbnail {
   aspect-ratio: 16/9;
-  background: linear-gradient(
-    135deg,
-    var(--tertiary-bg) 0%,
-    rgba(194, 178, 128, 0.1) 100%
-  );
+  position: relative;
+  background: linear-gradient(135deg, var(--tertiary-bg) 0%, rgba(194, 178, 128, 0.1) 100%);
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
@@ -38,11 +52,52 @@
   text-align: center;
   border: 1px solid rgba(194, 178, 128, 0.2);
   transition: all var(--transition-fast);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.concept-thumbnail.has-image .concept-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.45) 55%,
+      rgba(0,0,0,0.75) 100%
+    ); /* Dark gradient foundation */
+  pointer-events: none;
+}
+
+/* Gold tint layer using site accent color */
+.concept-thumbnail.has-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-gold);
+  opacity: 0.18; /* subtle gold wash */
+  mix-blend-mode: multiply; /* darken & infuse gold tone */
+  pointer-events: none;
+}
+
+/* Fallback for browsers without mix-blend-mode support */
+@supports not (mix-blend-mode: multiply) {
+  .concept-thumbnail.has-image::after {
+    opacity: 0.08; /* soften since no blending */
+  }
+}
+
+.concept-thumbnail.has-image .placeholder-content {
+  position: relative;
+  z-index: 2;
 }
 
 .concept-thumbnail:hover {
   border-color: var(--accent-gold);
-  box-shadow: 0 4px 20px rgba(194, 178, 128, 0.2);
+  box-shadow: 0 4px 24px rgba(194, 178, 128, 0.25);
+  transform: translateY(-2px);
 }
 
 .placeholder-content {
@@ -55,12 +110,14 @@
   font-family: var(--font-title);
   font-size: var(--font-size-md);
   color: var(--text-primary);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
 .concept-category {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);
   color: var(--accent-gold);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
 
 @media (max-width: 768px) {

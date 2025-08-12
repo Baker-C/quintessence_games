@@ -5,6 +5,36 @@
   overflow: hidden;
 }
 
+/* Painting background layer */
+/* Cross-fade stack */
+.introduction-section .painting-bg-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.introduction-section .painting-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: saturate(0.7) brightness(0.7) contrast(1.05);
+  mix-blend-mode: lighten;
+  transition: opacity 2.2s ease-in-out; /* fade duration */
+  will-change: opacity;
+}
+
+.introduction-section .painting-bg-layer.active { opacity: 0.28; }
+.introduction-section .painting-bg-layer.inactive { opacity: 0; }
+
+/* Removed hard-coded background-image url() rules that caused build-time resolution errors.
+  Background images are now applied inline via React (see IntroductionSection.js). */
+
+/* Removed old single-layer pulsing animation in favor of cross-fade. */
+
 /* Background pattern - same as values section */
 .introduction-section::before {
   content: '';
@@ -43,6 +73,7 @@
   display: flex;
   flex-direction: column;
   padding-left: var(--nav-width);
+  padding-right: var(--nav-width);
   padding-top: calc(var(--spacing-xxl) * 2);
   padding-bottom: calc(var(--spacing-xxl) * 2);
 }
@@ -56,12 +87,18 @@
 .section-text {
   font-family: var(--font-body);
   font-size: var(--font-size-lg);
-  color: var(--text-primary);
+  color: var(--text-primary); /* white body */
   line-height: 1.2;
   opacity: 0.9;
   margin: 0;
   text-indent: 2em;
   margin-bottom: var(--spacing-md);
+}
+
+/* Tagline (first bold italic paragraph) gold override */
+.introduction-block .section-text:first-child p {
+  color: var(--accent-gold);
+  text-indent: 0;
 }
 
 .section-text:first-child {

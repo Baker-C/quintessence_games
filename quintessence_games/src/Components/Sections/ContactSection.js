@@ -6,12 +6,14 @@ import sectionsCopy from '../../Copy/sections';
 const ContactSection = () => {
   const { contact } = sectionsCopy;
   const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Contact form submitted:', { message });
+    console.log('Contact form submitted:', { email, message });
     // Handle form submission
     setMessage('');
+    setEmail('');
   };
 
   return (
@@ -36,6 +38,18 @@ const ContactSection = () => {
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
+          <div className="form-group">
+            <label htmlFor="email" className="visually-hidden">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email*"
+              required
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="message" className="visually-hidden">
               Message

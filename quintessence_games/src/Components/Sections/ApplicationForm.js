@@ -11,6 +11,7 @@ const ApplicationForm = ({ onClose }) => {
     phone: '',
     jobRole: '',
     portfolioUrl: '',
+    linkedinUrl: '',
     resume: null,
     agreeToTerms: false
   });
@@ -113,16 +114,29 @@ const ApplicationForm = ({ onClose }) => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="portfolioUrl">Portfolio URL</label>
-            <input
-              type="url"
-              id="portfolioUrl"
-              name="portfolioUrl"
-              value={formData.portfolioUrl}
-              onChange={handleInputChange}
-              placeholder="https://yourportfolio.com"
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="portfolioUrl">Portfolio URL</label>
+              <input
+                type="url"
+                id="portfolioUrl"
+                name="portfolioUrl"
+                value={formData.portfolioUrl}
+                onChange={handleInputChange}
+                placeholder="https://yourportfolio.com"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="linkedinUrl">LinkedIn URL</label>
+              <input
+                type="url"
+                id="linkedinUrl"
+                name="linkedinUrl"
+                value={formData.linkedinUrl}
+                onChange={handleInputChange}
+                placeholder="https://linkedin.com/in/username"
+              />
+            </div>
           </div>
 
           <div className="form-group">

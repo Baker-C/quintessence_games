@@ -5,6 +5,49 @@
   overflow: hidden;
 }
 
+/* Moving painting background (restricted to values + genesis) */
+.values-painting-bg-stack {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.values-painting-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: saturate(0.55) brightness(0.55) contrast(1.05);
+  mix-blend-mode: overlay;
+  transition: opacity 2s ease-in-out; /* matches FADE_MS */
+  will-change: opacity, transform;
+}
+
+.values-painting-layer.active { opacity: 0.18; }
+.values-painting-layer.inactive { opacity: 0; }
+
+.values-painting-layer.drift-a { animation: valuesDriftA 46s ease-in-out infinite; }
+.values-painting-layer.drift-b { animation: valuesDriftB 46s ease-in-out infinite; }
+
+@keyframes valuesDriftA {
+  0% { transform: scale(1) translate3d(0,0,0); }
+  25% { transform: scale(1.04) translate3d(0.8%, -0.8%, 0); }
+  50% { transform: scale(1.06) translate3d(-0.8%, 0.8%, 0); }
+  75% { transform: scale(1.03) translate3d(0.4%, -0.4%, 0); }
+  100% { transform: scale(1) translate3d(0,0,0); }
+}
+
+@keyframes valuesDriftB {
+  0% { transform: scale(1) translate3d(0,0,0); }
+  25% { transform: scale(1.04) translate3d(-0.8%, 0.8%, 0); }
+  50% { transform: scale(1.06) translate3d(0.8%, -0.8%, 0); }
+  75% { transform: scale(1.03) translate3d(-0.4%, 0.4%, 0); }
+  100% { transform: scale(1) translate3d(0,0,0); }
+}
+
 .values-container {
   display: flex;
   flex-direction: column;
@@ -18,7 +61,7 @@
 .values-heading {
   font-family: var(--font-title);
   font-size: var(--font-size-xl);
-  color: var(--text-primary);
+  color: var(--accent-gold);
   margin-bottom: var(--spacing-xl);
   line-height: 1.1;
   position: relative;
@@ -36,6 +79,8 @@
   padding-left: var(--spacing-lg);
   position: relative;
 }
+
+.values-block .section-text { color: var(--text-primary); }
 
 .values-block::before {
   content: '';

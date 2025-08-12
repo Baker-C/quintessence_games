@@ -8,6 +8,7 @@ import InitialOverlay from '../Components/InitialOverlay/InitialOverlay';
 const Layout = ({ children }) => {
   const [isSoundEnabled, setIsSoundEnabled] = useState(false);
   const [overlayComplete, setOverlayComplete] = useState(false);
+  const [isHeroComplete, setIsHeroComplete] = useState(false);
 
   const toggleSound = () => {
     setIsSoundEnabled(!isSoundEnabled);
@@ -18,6 +19,11 @@ const Layout = ({ children }) => {
     setOverlayComplete(true);
   };
 
+  // Callback for hero animation completion
+  const handleHeroComplete = () => {
+    setIsHeroComplete(true);
+  };
+
   return (
     <div className="layout-container" data-sound-enabled={isSoundEnabled}>
       <InitialOverlay onComplete={handleOverlayComplete} />
@@ -26,10 +32,11 @@ const Layout = ({ children }) => {
      {overlayComplete && <Navigation 
         isSoundEnabled={isSoundEnabled}
         onSoundToggle={toggleSound}
+        isHeroComplete={isHeroComplete}
       />}
       
       <main className="main-content" role="main">
-        {React.cloneElement(children, { overlayComplete })}
+        {React.cloneElement(children, { overlayComplete, onHeroComplete: handleHeroComplete })}
       </main>
       
       <footer className="footer-container" role="contentinfo">
