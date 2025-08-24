@@ -36,12 +36,10 @@ const sectionsCopy = {
       narrative: 'Narrative'
     },
     jobs: [
-      { title: 'Senior Narrative Designer', location: 'Remote', department: 'narrative' },
-      { title: '3D Environment Artist', location: 'Austin, TX', department: 'art' },
-      { title: 'Frontend Developer', location: 'Remote', department: 'engineering' },
-      { title: 'UI/UX Designer', location: 'Remote', department: 'design' },
-      { title: 'Technical Artist', location: 'Austin, TX', department: 'art' },
-      { title: 'Backend Engineer', location: 'Remote', department: 'engineering' }
+      { title: 'Character Modeler', location: 'US Remote', department: 'Art' },
+      { title: 'Concept Artist', location: 'US Remote', department: 'Art' },
+      { title: 'Lead Unreal Engineer', location: 'US Remote', department: 'Engineering' },
+
     ]
   },
   team: {
@@ -76,24 +74,36 @@ const sectionsCopy = {
     ],
     members: [
       {
-        name: 'Sarah Chen',
-        role: 'Lead Game Designer',
-        bio: 'Passionate about creating immersive player experiences with over 8 years in game design and narrative development.'
+        name: 'Daniel Corralez',
+        role: 'Assistant Game Designer',
       },
       {
-        name: 'Marcus Thompson',
-        role: 'Senior Developer',
-        bio: 'Full-stack engineer specializing in game engines and performance optimization with expertise in Unity and Unreal.'
+        name: 'Jim Diaz',
+        role: 'Audio Director',
       },
       {
-        name: 'Elena Rodriguez',
-        role: 'Art Director',
-        bio: 'Visual storyteller with a background in concept art and 3D modeling, bringing worlds to life through stunning visuals.'
+        name: 'Sean Ashcraft',
+        role: 'IT Manager',
       },
       {
-        name: 'David Kim',
-        role: 'Sound Designer',
-        bio: 'Audio specialist creating immersive soundscapes and dynamic music that enhances emotional gameplay experiences.'
+        name: 'Zachary',
+        role: 'Animator',
+      },
+      {
+        name: 'Joshua Jones',
+        role: 'Lead Designer',
+      },
+      {
+        name: 'Casey Weidner',
+        role: 'Engineer',
+      },
+      {
+        name: 'Chris Hepler',
+        role: 'Writer',
+      },
+      {
+        name: 'Charles Baker',
+        role: 'Jr. Engineer',
       }
     ]
   },

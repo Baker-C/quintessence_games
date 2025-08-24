@@ -6,6 +6,8 @@ import navigationCopy from '../../Copy/navigation';
 
 const Navigation = ({ isSoundEnabled, onSoundToggle, isHeroComplete }) => {
   const [showLogo, setShowLogo] = useState(false);
+  const [logoSrc, setLogoSrc] = useState('/Logo_100.png');
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,9 +25,28 @@ const Navigation = ({ isSoundEnabled, onSoundToggle, isHeroComplete }) => {
       // Show once we've passed halfway OR fully exited hero
       setShowLogo(progress >= 0.5 || progress >= 1);
     };
+
+    const updateLogo = () => {
+      if (window.innerWidth < 768) {
+        setLogoSrc('/Logo_50.png');
+        setIsSmallScreen(true);
+      } else {
+        setLogoSrc('/Logo_100.png');
+        setIsSmallScreen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // initial
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', updateLogo);
+
+    // Set initial logo and handle scroll on mount
+    handleScroll();
+    updateLogo();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateLogo);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -59,42 +80,25 @@ const Navigation = ({ isSoundEnabled, onSoundToggle, isHeroComplete }) => {
           className="top-button"
           onClick={scrollToNextSection}
           aria-label="Quintessence Games - Continue to next section"
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ 
+          initial={isSmallScreen ? {} : { width: 0, opacity: 0 }}
+          animate={isSmallScreen ? {} : { 
             width: showLogo ? 'fit-content' : 0,
+            paddingRight: showLogo ? 'var(--spacing-sm)' : 0,
             opacity: showLogo ? 1 : 0
           }}
-          transition={{ 
+          transition={isSmallScreen ? {} : { 
             duration: 0.5, 
             ease: "easeInOut" 
           }}
           disabled={!showLogo}
         >
           <div className="logo-qg">
-            QG
+            <img src={logoSrc} alt="QG" />
           </div>
         </motion.button>
 
         {/* Bottom Section */}
         <div className="nav-bottom">
-          {/* Sound Toggle */}
-          <motion.button
-            className="sound-toggle"
-            onClick={onSoundToggle}
-            initial={{ x: -240, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeInOut", delay: 1.5 }}
-            aria-label={`Toggle sound ${isSoundEnabled ? 'off' : 'on'}`}
-            aria-pressed={isSoundEnabled}
-          >
-            <span className="sound-icon" aria-hidden="true">
-              {isSoundEnabled ? '🔊' : '🔇'}
-            </span>
-            <span className="sound-text">
-              {isSoundEnabled ? navigationCopy.soundToggle.on : navigationCopy.soundToggle.off}
-            </span>
-          </motion.button>
-          
           {/* Navigation Links */}
           <div className="nav-links">
             {Object.entries(navigationCopy.links).map(([key, label]) => (

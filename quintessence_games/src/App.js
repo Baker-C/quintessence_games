@@ -29,7 +29,7 @@ function App({ overlayComplete, onHeroComplete }) {
   <GenesisSection />
   <TeamSection />
   <ValuesSection />
-  <ConceptArtSection />
+  {/* <ConceptArtSection /> */}
       <JoinTeamSection onApplyClick={handleToggleApplication} />
       {showApplicationForm && (
         <ApplicationForm onClose={handleCloseApplication} />

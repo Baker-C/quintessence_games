@@ -5,11 +5,7 @@ const navigationCopy = {
   logo: 'Welcome to QG',
   links: {
     about: 'Information',
-    join: 'Join the Team'
-  },
-  soundToggle: {
-    on: 'Sound On',
-    off: 'Sound Off'
+    join: 'Join-the-Team'
   },
   contactButton: {
     label: 'Get in Touch',

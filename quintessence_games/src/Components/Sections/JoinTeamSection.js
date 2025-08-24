@@ -57,6 +57,7 @@ const JoinTeamSection = ({ onApplyClick }) => {
               viewport={{ once: true, amount: 0.8 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
+              {index === 0 && <div className="job-divider"></div>}
               <div className="job-content">
                 <span className="job-title">{job.title}</span>
                 <span className="job-location">{job.location}</span>

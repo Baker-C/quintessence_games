@@ -85,20 +85,6 @@
   height: fit-content;
 }
 
-/* Stack words on tablet/phone */
-@media (max-width: 1500px) {
-  .title-container {
-    flex-direction: column;
-    gap: 0.75ch; /* Slightly larger gap between stacked words on tablet */
-    width: fit-content;
-    height: fit-content;
-  }
-  /* Reduce title font size starting at tablet */
-  .title-letter {
-    font-size: var(--font-size-xl);
-  }
-}
-
 .growing-square {
   position: absolute;
   top: 50%;
@@ -365,33 +351,25 @@
   }
   
   /* Responsive adjustments */
-  @media (max-width: 900px) {
-    .hero-tagline {
-      bottom: 2rem;
-      right: 2rem;
-    }
-    
+  @media (max-width: 1024px) {
     .tagline-text {
       font-size: clamp(0.9rem, 3vw, 1.2rem);
+      padding-bottom: 2.5rem;
     }
     
     .title-letter {
       font-size: var(--font-size-lg);
     }
-
-    .continue-button {
-      bottom: 0;
-    }
   }
   
-  @media (max-width: 480px) {
-    .hero-tagline {
-      bottom: 1.5rem;
-      right: 1.5rem;
-    }
-    
+  @media (max-width: 768px) {
     .tagline-text {
       font-size: clamp(0.8rem, 4vw, 1rem);
+      padding-bottom: 3.5rem;
+    }
+
+    .continue-button {
+      bottom: 170px;
     }
   }
   
@@ -405,8 +383,8 @@
   /* Hero tagline at bottom right */
   .hero-tagline {
     position: absolute;
-    bottom: 4rem;
-    right: 4rem;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-md);
     z-index: 10;
   }
   
@@ -422,3 +400,29 @@
     overflow: hidden;
     text-wrap: nowrap;
   }
+
+/* Stack words on tablet/phone */
+@media (max-width: 1500px) {
+  .title-container {
+    flex-direction: column;
+    gap: 0.75ch; /* Slightly larger gap between stacked words on tablet */
+    width: fit-content;
+    height: fit-content;
+  }
+  /* Reduce title font size starting at tablet */
+  .title-letter {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .title-letter {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 490px) {
+  .title-letter {
+    font-size: var(--font-size-md);
+  }
+}

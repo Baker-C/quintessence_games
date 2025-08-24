@@ -5,6 +5,7 @@
   background: var(--primary-bg);
   text-align: center;
   overflow: hidden;
+  margin-bottom: var(--spacing-xxl);
 }
 
 .team-section::before {
@@ -25,7 +26,6 @@
   font-family: var(--font-title);
   font-size: var(--font-size-xl);
   color: var(--accent-gold);
-  margin-bottom: var(--spacing-xxl);
 }
 
 .subsection-heading {

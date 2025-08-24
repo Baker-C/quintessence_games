@@ -52,12 +52,17 @@ const Hero = ({ overlayComplete, onHeroComplete }) => {
     animationStartedRef.current = true; // optimistic set; may be reset in cleanup under StrictMode
     console.log('[Hero] Scheduling convergence animation');
     const delayTimeout = setTimeout(() => {
+      // Ease in-out function (cubic)
+      const easeInOut = (t) => t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
       const step = (timestamp) => {
         if (!start) start = timestamp;
         const elapsed = timestamp - start;
-        const progress = Math.min(1, elapsed / duration);
+        const linearProgress = Math.min(1, elapsed / duration);
+        const progress = easeInOut(linearProgress);
         setConvergenceProgress(progress);
-        if (progress < 1) {
+        if (linearProgress < 1) {
           frame = requestAnimationFrame(step);
         } else {
           setConvergenceProgress(1);

@@ -44,3 +44,9 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+@media (max-width: 767px) {
+  .footer-content {
+    padding-bottom: 70px;
+  }
+}

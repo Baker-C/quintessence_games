@@ -96,9 +96,8 @@
 }
 
 /* Tagline (first bold italic paragraph) gold override */
-.introduction-block .section-text:first-child p {
+.section-text:first-child {
   color: var(--accent-gold);
-  text-indent: 0;
 }
 
 .section-text:first-child {
@@ -109,27 +108,26 @@
   margin-bottom: 0;
 }
 
-/* Responsive design */
 @media (max-width: 1024px) {
   .content-layout {
-    padding-left: var(--spacing-md);
-  }
-  
-  .paragraph-block {
     padding-left: 0;
-  }
-  
-  .paragraph-block::before {
-    display: none;
+    padding-right: 0;
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
   }
 }
 
 @media (max-width: 768px) {
+  .content-layout {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+  }
   .section-heading {
     font-size: var(--font-size-lg);
   }
-  
   .section-text {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-md);
   }
 }

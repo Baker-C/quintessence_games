@@ -84,7 +84,7 @@ p {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --accent-gold: #FFD700;
+    --accent-gold: #f8b23e;
     --text-primary: #FFFFFF;
     --primary-bg: #000000;
   }
