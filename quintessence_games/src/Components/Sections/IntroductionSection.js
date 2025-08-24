@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './IntroductionSection.css';
+import '../../Styles/background-pizzazz.css';
 import sectionsCopy from '../../Copy/sections';
+
+
 
 const IntroductionSection = () => {
   const { introduction } = sectionsCopy;
 
   return (
-    <section className="introduction-section section" id="about" aria-labelledby="introduction-heading">
+    <section className="introduction-section section grey-background" id="about" aria-labelledby="introduction-heading">
       <div className="section-content">
         <div className="content-layout">
           <div className="text-content">

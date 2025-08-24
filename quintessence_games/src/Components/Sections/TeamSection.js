@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './TeamSection.css';
+import '../../Styles/background-pizzazz.css';
 import sectionsCopy from '../../Copy/sections';
 
 const TeamSection = () => {
   const { team } = sectionsCopy;
   return (
-    <section className="team-section section" id="team" aria-labelledby="team-heading">
+    <section className="team-section section grey-background" id="team" aria-labelledby="team-heading">
       <div className="section-content">
         <motion.h2
           id="team-heading"

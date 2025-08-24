@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './Hero.css';
 import heroCopy from '../../Copy/hero.js';
+import '../../Styles/painting-bg.css'; // Import painting-bg styles
 
 const generateTitleLetters = () => {
   const wordOneLetters = heroCopy.titleWordOne.split('').map((letter, index) => ({
@@ -111,6 +112,41 @@ const Hero = ({ overlayComplete, onHeroComplete }) => {
     }
   };
 
+  const paintings = [
+    '/art/paintings/POC_CorpoPaintingTemp5.PNG',
+    '/art/paintings/POC_CorpoPaintingTemp6.PNG',
+    '/art/paintings/POC_CorpoPaintingTemp8.PNG',
+    '/art/paintings/POC_CorpoPaintingTemp9.PNG'
+  ];
+  const [frontImage, setFrontImage] = useState(paintings[0]);
+  const [backImage, setBackImage] = useState(paintings[1] || paintings[0]);
+  const [isFrontActive, setIsFrontActive] = useState(true);
+  const [frontVariant, setFrontVariant] = useState('drift-a');
+  const [backVariant, setBackVariant] = useState('drift-b');
+  const indexRef = useRef(1);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    if (paintings.length <= 1) return;
+    const crossFade = () => {
+      const nextIndex = (indexRef.current + 1) % paintings.length;
+      indexRef.current = nextIndex;
+      const nextSrc = paintings[nextIndex];
+      const nextVariant = isFrontActive ? 'drift-b' : 'drift-a';
+      if (isFrontActive) {
+        setBackImage(nextSrc);
+        setBackVariant(nextVariant);
+      } else {
+        setFrontImage(nextSrc);
+        setFrontVariant(nextVariant);
+      }
+      setIsFrontActive((prev) => !prev);
+      timeoutRef.current = setTimeout(crossFade, 7000);
+    };
+    timeoutRef.current = setTimeout(crossFade, 5000);
+    return () => clearTimeout(timeoutRef.current);
+  }, [paintings, isFrontActive]);
+
   return (
     <div className="hero-container">
       {showContent && <motion.div
@@ -140,12 +176,30 @@ const Hero = ({ overlayComplete, onHeroComplete }) => {
       {/* Scroll-based title animation */}
       <div className="hero-title-container">
         {/* Growing square background */}
-        <motion.div
-          className="growing-square"
+        <motion.div 
+          className="growing-square" 
+          aria-hidden="true"
           style={{
-            transform: `translate(-50%, -50%) scale(${0.1 + convergenceProgress * 0.9})`, // Start at 10% scale, grow to 100% at end
+            transform: `translate(-50%, -50%) scale(${0.1 + 0.9 * convergenceProgress})`
           }}
-        />
+          >
+            <div className="painting-bg-stack">
+              <motion.div
+                className={`painting-bg-layer ${isFrontActive ? 'active' : 'inactive'} ${frontVariant}`}
+                style={{ backgroundImage: `url(${frontImage})` }}
+                initial={{ scale: 0.1 }} // Start small
+                animate={{ scale: 1 }} // Grow to full size
+                transition={{ duration: 5, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className={`painting-bg-layer ${!isFrontActive ? 'active' : 'inactive'} ${backVariant}`}
+                style={{ backgroundImage: `url(${backImage})` }}
+                initial={{ scale: 0.1 }} // Start small
+                animate={{ scale: 1 }} // Grow to full size
+                transition={{ duration: 5, ease: 'easeInOut' }}
+              />
+            </div>
+        </motion.div>
         <div className="title-container">
           <div className="title-letters-wrapper word-one">
           {titleLettersRef.current.filter(l => l.word === 1).map((letterObj) => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import './InitialOverlay.css';
+import './InitialOverlayButton.css';
 import initialOverlayCopy from '../../Copy/initialOverlay';
 
 const InitialOverlay = ({ onComplete }) => {
@@ -41,6 +42,22 @@ const InitialOverlay = ({ onComplete }) => {
     }
   };
 
+  const renderGlowingText = (text) => {
+    return text.split('').map((char, index) => {
+      const randomDelay = Math.random() * 3; // Random delay between 0 and 3 seconds
+      const shouldBlink = index % 4 === 0; // Only 1 out of every 4 letters blinks
+      return (
+        <span 
+          key={index} 
+          className={shouldBlink ? 'glowing-txt faulty-letter' : 'glowing-static'}
+          style={shouldBlink ? { animationDelay: `${randomDelay}s`, animationDuration: '8s' } : {}}
+        >
+          {char}
+        </span>
+      );
+    });
+  };
+
   return (
     <motion.div
       className="initial-hero-overlay"
@@ -58,7 +75,7 @@ const InitialOverlay = ({ onComplete }) => {
       <div className="initial-hero-content">
         <motion.h1
           className="hero-text"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: -50 }}
           animate={isExiting ? { 
             opacity: [1, 0, 1, 0],
           } : { 
@@ -71,16 +88,17 @@ const InitialOverlay = ({ onComplete }) => {
               times: [0, 0.25, 0.75, 1]
             }
           } : {
-            duration: 1
+            delay: .4,
+            duration: 1.5
           }}
         >
           {initialOverlayCopy.enterText}
         </motion.h1>
 
         <motion.button
-          className="cta-button"
+          className="glowing-btn"
           onClick={handleCtaClick}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0 }}
           animate={isExiting ? {
             opacity: [1, 0, 1, 0],
           } : {
@@ -93,12 +111,11 @@ const InitialOverlay = ({ onComplete }) => {
               times: [0, 0.25, 0.75, 1]
             }
           } : {
-            duration: 0.8, 
-            delay: 1.4
+            duration: 0.4, 
           }}
           aria-label={initialOverlayCopy.ctaButton.ariaLabel}
         >
-          {initialOverlayCopy.ctaButton.label}
+          {renderGlowingText(initialOverlayCopy.ctaButton.label)}
         </motion.button>
       </div>
     </motion.div>
