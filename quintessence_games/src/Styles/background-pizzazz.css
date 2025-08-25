@@ -1,34 +1,30 @@
-/* Grey-toned background with pizzazz */
-
-/* Grey version */
-.grey-background {
-  background: radial-gradient(circle at 20% 20%, rgba(13, 13, 13, 0.6), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(26, 26, 26, 0.5), transparent 70%),
-              radial-gradient(circle at 50% 50%, rgba(34, 34, 34, 0.3), transparent 80%),
-              repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 5%, transparent 5%, transparent 10%);
-  background-color: var(--primary-bg);
-  background-blend-mode: overlay;
+.light-ray-background {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Dark-grey version */
-.dark-grey-background {
-  background: radial-gradient(circle at 20% 20%, rgba(13, 13, 13, 0.7), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(26, 26, 26, 0.6), transparent 70%),
-              radial-gradient(circle at 50% 50%, rgba(34, 34, 34, 0.4), transparent 80%),
-              repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 5%, transparent 5%, transparent 10%);
-  background-color: var(--secondary-bg);
-  background-blend-mode: overlay;
+.light-ray-background::before,
+.light-ray-background::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  bottom: 0;
+  width: 30%; /* Increased width for thicker rays */
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2); /* Increased opacity for more visibility */
+  filter: blur(26px); /* Slightly sharper edges */
+  transform-origin: top;
+  transform: rotate(-45deg) skewY(-25deg) scale(0.5, 1); /* Adjusted scale to make top skinnier than bottom */
+  mix-blend-mode: overlay;
+  pointer-events: none;
 }
 
-/* Animation for subtle gradient movement */
-@keyframes fog-shift {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 50% 50%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
+.light-ray-background::before {
+  left: -20%;
+  transform: rotate(-42deg) skewY(-25deg) scale(1, 3); /* Adjusted scale for variation */
+}
+
+.light-ray-background::after {
+  top: -80%;
+  transform: rotate(-40deg) skewY(-30deg) scale(1.4, 3); /* Adjusted scale for variation */
 }

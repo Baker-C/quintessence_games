@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './JoinTeamSection.css';
+import '../../Styles/background-pizzazz.css';
 import sectionsCopy from '../../Copy/sections';
 
 const JoinTeamSection = ({ onApplyClick }) => {
@@ -24,7 +25,7 @@ const JoinTeamSection = ({ onApplyClick }) => {
   };
 
   return (
-    <section className="join-team-section section" id="jobs" aria-labelledby="join-team-heading">
+    <section className="join-team-section section light-ray-background" id="jobs" aria-labelledby="join-team-heading">
       <div className="section-content">
         <motion.h2
           id="join-team-heading"

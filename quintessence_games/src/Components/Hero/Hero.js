@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import './Hero.css';
 import heroCopy from '../../Copy/hero.js';
-import '../../Styles/painting-bg.css'; // Import painting-bg styles
+import '../../Styles/painting-bg.css';
 
 const generateTitleLetters = () => {
   const wordOneLetters = heroCopy.titleWordOne.split('').map((letter, index) => ({
@@ -180,22 +180,30 @@ const Hero = ({ overlayComplete, onHeroComplete }) => {
           className="growing-square" 
           aria-hidden="true"
           style={{
-            transform: `translate(-50%, -50%) scale(${0.1 + 0.9 * convergenceProgress})`
+            transform: `translate(-50%, -50%) scale(${0.1 + 0.9 * convergenceProgress})`,
+            borderRadius: `${200 - 200 * convergenceProgress}px`, // Adjust border radius dynamically
+            opacity: convergenceProgress < 1 ? 0.4 : 1 // Maintain 0.4 opacity during growth, set to 1 after growth ends
           }}
           >
             <div className="painting-bg-stack">
               <motion.div
                 className={`painting-bg-layer ${isFrontActive ? 'active' : 'inactive'} ${frontVariant}`}
-                style={{ backgroundImage: `url(${frontImage})` }}
-                initial={{ scale: 0.1 }} // Start small
-                animate={{ scale: 1 }} // Grow to full size
+                style={{ 
+                  backgroundImage: `url(${frontImage})`,
+                  transform: `scale(${1.5 - 0.5 * convergenceProgress})` // Zoom effect for background images
+                }}
+                initial={{ scale: 1.5 }} // Start zoomed in
+                animate={{ scale: 1 }} // Grow to normal size
                 transition={{ duration: 5, ease: 'easeInOut' }}
               />
               <motion.div
                 className={`painting-bg-layer ${!isFrontActive ? 'active' : 'inactive'} ${backVariant}`}
-                style={{ backgroundImage: `url(${backImage})` }}
-                initial={{ scale: 0.1 }} // Start small
-                animate={{ scale: 1 }} // Grow to full size
+                style={{ 
+                  backgroundImage: `url(${backImage})`,
+                  transform: `scale(${1.5 - 0.5 * convergenceProgress})` // Zoom effect for background images
+                }}
+                initial={{ scale: 1.5 }} // Start zoomed in
+                animate={{ scale: 1 }} // Grow to normal size
                 transition={{ duration: 5, ease: 'easeInOut' }}
               />
             </div>

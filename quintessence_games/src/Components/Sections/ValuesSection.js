@@ -54,16 +54,6 @@ const ValuesSection = () => {
         />
       </div>
       <div className="information-container">
-        <motion.div
-          className="subtitle"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.4 }}
-        >
-          {values.subtitle}
-        </motion.div>
-
         <motion.h2
           id="information-heading"
           className="information-heading"
@@ -74,6 +64,16 @@ const ValuesSection = () => {
         >
           {values.heading}
         </motion.h2>
+        
+        <motion.div
+          className="subtitle"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.4 }}
+        >
+          {values.subtitle}
+        </motion.div>
 
         <div className="information-block">
           {values.content.map((paragraph, index) => (

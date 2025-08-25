@@ -7,7 +7,7 @@ import sectionsCopy from '../../Copy/sections';
 const TeamSection = () => {
   const { team } = sectionsCopy;
   return (
-    <section className="team-section section grey-background" id="team" aria-labelledby="team-heading">
+    <section className="team-section section light-ray-background" id="team" aria-labelledby="team-heading">
       <div className="section-content">
         <motion.h2
           id="team-heading"

@@ -10,7 +10,7 @@ const IntroductionSection = () => {
   const { introduction } = sectionsCopy;
 
   return (
-    <section className="introduction-section section grey-background" id="about" aria-labelledby="introduction-heading">
+    <section className="introduction-section section light-ray-background" id="about" aria-labelledby="introduction-heading">
       <div className="section-content">
         <div className="content-layout">
           <div className="text-content">

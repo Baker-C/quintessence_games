@@ -5,31 +5,6 @@
   overflow: hidden;
 }
 
-/* Painting background layer */
-/* Cross-fade stack */
-.introduction-section .painting-bg-stack {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.introduction-section .painting-bg-layer {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  filter: saturate(0.7) brightness(0.7) contrast(1.05);
-  mix-blend-mode: lighten;
-  transition: opacity 2.2s ease-in-out; /* fade duration */
-  will-change: opacity;
-}
-
-.introduction-section .painting-bg-layer.active { opacity: 0.28; }
-.introduction-section .painting-bg-layer.inactive { opacity: 0; }
-
 /* Removed hard-coded background-image url() rules that caused build-time resolution errors.
   Background images are now applied inline via React (see IntroductionSection.js). */
 

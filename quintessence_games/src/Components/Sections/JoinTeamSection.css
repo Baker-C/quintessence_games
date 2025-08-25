@@ -1,7 +1,6 @@
 @import '../../Styles/variables.css';
 
 .join-team-section {
-  background-color: var(--secondary-bg);
   text-align: center;
 }
 
@@ -25,11 +24,12 @@
 
 .jobs-list {
   max-width: 800px;
-  margin: 0 auto var(--spacing-xxl);
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0;
 }
 
 .job-item {
-  margin-bottom: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
 }
 
 .job-content {
@@ -53,7 +53,7 @@
 }
 
 .job-divider {
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
     90deg,
     transparent 0%,

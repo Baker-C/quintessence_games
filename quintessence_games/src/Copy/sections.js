@@ -74,8 +74,12 @@ const sectionsCopy = {
     ],
     members: [
       {
-        name: 'Daniel Corralez',
-        role: 'Assistant Game Designer',
+        name: 'Casey Weidner',
+        role: 'Engineer',
+      },
+      {
+        name: 'Charles Baker',
+        role: 'Jr. Engineer',
       },
       {
         name: 'Jim Diaz',
@@ -90,21 +94,9 @@ const sectionsCopy = {
         role: 'Animator',
       },
       {
-        name: 'Joshua Jones',
-        role: 'Lead Designer',
-      },
-      {
-        name: 'Casey Weidner',
-        role: 'Engineer',
-      },
-      {
         name: 'Chris Hepler',
         role: 'Writer',
       },
-      {
-        name: 'Charles Baker',
-        role: 'Jr. Engineer',
-      }
     ]
   },
   contact: {
