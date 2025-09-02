@@ -5,7 +5,7 @@ const sectionsCopy = {
     subtitle: 'What Drives Us',
     content: [
       '"We create games for the Soul."',
-      'This reflects our drive to craft emotional unforgettable gaming experiences for all players. We draw on our team\'s diverse perspectives to build heart-pounding action, chilling suspence, and powerful narratives that move the soul.',
+      'This reflects our drive to craft emotionally unforgettable gaming experiences for all players. We draw on our team\'s diverse perspectives to build heart-pounding action, chilling suspense, and powerful narratives that move the soul.',
       'Our mission is to redefine what games can mean through innovation and connection with our players.'
     ]
   },
@@ -50,13 +50,13 @@ const sectionsCopy = {
       {
         name: 'Julio Aguilar',
         role: 'CEO',
-        bio: 'Julio Aguilar is the founder, visionary, and creativedirector of Quintessence Games as well as a life-long gaming enthusiast.',
+        bio: 'Julio Aguilar is the founder, visionary, and creative director of Quintessence Games, and a lifelong gaming enthusiast.',
         imageAlt: 'Portrait of Julio Aguilar, CEO and Founder'
       },
       {
         name: 'Jonathan Hight',
         role: 'COO',
-        bio: 'Jonathan Hight is an operations and productions expert with 20+ years in the industry working on AAA titles from some of the world\'s biggest studios.',
+        bio: 'Jonathan Hight is an operations and production expert with 20+ years in the industry, working on AAA titles for some of the world\'s biggest studios.',
         imageAlt: 'Portrait of Jonathan Hight, Chief Operating Officer'
       },
       {
@@ -68,7 +68,7 @@ const sectionsCopy = {
       {
         name: 'Frankie Cruz',
         role: 'CFO',
-        bio: 'Frankie Cruz is an investment and corporate finance expert in Mergers & Acquisitions and financial modeling with successful exit-stage experience.',
+        bio: 'Frankie Cruz is an investment and corporate finance expert, specializing in mergers and acquisitions and financial modeling, with successful exit-stage experience.',
         imageAlt: 'Portrait of Frankie Cruz, Chief Financial Officer'
       }
     ],
@@ -90,12 +90,12 @@ const sectionsCopy = {
         role: 'IT Manager',
       },
       {
-        name: 'Zachary',
-        role: 'Animator',
+        name: 'Zachary Sartor-Duchene',
+        role: 'Art Director',
       },
       {
         name: 'Chris Hepler',
-        role: 'Writer',
+        role: 'Writing Director',
       },
     ]
   },
