@@ -128,8 +128,14 @@
 }
 
 @media (max-width: 768px) {
+  .team-section {
+    padding: var(--spacing-md);
+  }
+
   .team-grid {
     grid-template-columns: 1fr;
+    margin: 0 auto;
+    padding: 0;
     gap: var(--spacing-lg);
   }
   
