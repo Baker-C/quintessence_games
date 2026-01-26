@@ -50,7 +50,7 @@ const InitialOverlay = ({ onComplete }) => {
         <span 
           key={index} 
           className={shouldBlink ? 'glowing-txt faulty-letter' : 'glowing-static'}
-          style={shouldBlink ? { animationDelay: `${randomDelay}s`, animationDuration: '8s' } : {}}
+          style={shouldBlink ? { animationDelay: `${randomDelay}s`, animationDuration: '1.5s' } : {}}
         >
           {char}
         </span>

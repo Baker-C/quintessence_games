@@ -197,7 +197,7 @@
   .nav-bottom {
     flex-direction: row-reverse;
     align-items: flex-end;
-    gap: var(--spacing-md);
+    gap: var(--spacing-xs);
     width: auto;
     margin: 0;
     padding: 0;
@@ -212,4 +212,18 @@
 .logo-button:focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
+}
+
+
+/* Small font size for small screen */
+@media (max-width: 450px) {
+  .nav-link {
+    font-size: var(--font-size-xs);
+  }
+  .contact-button {
+    font-size: var(--font-size-xs);
+  }
+  .logo-qg {
+    max-height: 50px;
+  }
 }

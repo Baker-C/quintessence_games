@@ -31,9 +31,9 @@ function App({ overlayComplete, onHeroComplete }) {
   <ValuesSection />
   {/* <ConceptArtSection /> */}
       <JoinTeamSection onApplyClick={handleToggleApplication} />
-      {showApplicationForm && (
+      {/* {showApplicationForm && (
         <ApplicationForm onClose={handleCloseApplication} />
-      )}
+      )} */}
       <ContactSection />
     </div>
   );

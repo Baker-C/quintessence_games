@@ -5,7 +5,7 @@ const navigationCopy = {
   logo: 'Welcome to QG',
   links: {
     about: 'Information',
-    join: 'Join-the-Team'
+    join: 'Meet-the-Team'
   },
   contactButton: {
     label: 'Get in Touch',

@@ -48,5 +48,8 @@
 @media (max-width: 767px) {
   .footer-content {
     padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
   }
 }

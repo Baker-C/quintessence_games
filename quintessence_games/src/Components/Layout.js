@@ -41,10 +41,10 @@ const Layout = ({ children }) => {
       
       <footer className="footer-container" role="contentinfo">
         <div className="footer-content">
-          <span>Privacy</span>
+          {/* <span>Privacy</span>
           <span>·</span>
           <span>Terms and Conditions</span>
-          <span>·</span>
+          <span>·</span> */}
           <span>© 2025 Quintessence Games LLC</span>
         </div>
       </footer>

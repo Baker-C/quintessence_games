@@ -71,6 +71,32 @@
   outline-offset: 2px;
 }
 
+.contact-email-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contact-email-link {
+  color: var(--accent-gold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.contact-email-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.contact-email-link:focus {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
 @media (max-width: 768px) {
   .section-heading {
     font-size: var(--font-size-lg);

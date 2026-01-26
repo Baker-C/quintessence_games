@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import './ContactSection.css';
 import sectionsCopy from '../../Copy/sections';
 
 const ContactSection = () => {
   const { contact } = sectionsCopy;
-  const [message, setMessage] = useState('');
-  const [email, setEmail] = useState('');
+  
+  // const [message, setMessage] = useState('');
+  // const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Contact form submitted:', { email, message });
-    // Handle form submission
-    setMessage('');
-    setEmail('');
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log('Contact form submitted:', { email, message });
+  //   // Handle form submission
+  //   setMessage('');
+  //   setEmail('');
+  // };
 
   return (
     <section className="contact-section section" id="contact" aria-labelledby="contact-heading">
@@ -30,7 +31,7 @@ const ContactSection = () => {
           {contact.heading}
         </motion.h2>
 
-        <motion.form
+        {/* <motion.form
           className="contact-form"
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
@@ -68,7 +69,19 @@ const ContactSection = () => {
           <button type="submit" className="submit-button">
             {contact.submit}
           </button>
-        </motion.form>
+        </motion.form> */}
+        <motion.p
+          className="contact-email-text"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          {contact.emailText}{' '}
+          <a href={`mailto:${contact.email}`} className="contact-email-link">
+            {contact.email}
+          </a>
+        </motion.p>
       </div>
     </section>
   );

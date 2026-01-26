@@ -102,7 +102,9 @@ const sectionsCopy = {
   contact: {
     heading: 'Contact',
     placeholder: 'Tell us about your project ideas, collaboration opportunities, or just say hello...',
-    submit: 'Send Message'
+    submit: 'Send Message',
+    emailText: 'To get in touch, email our COO, Jonathan Hight, at',
+    email: 'jonathan.hight@gmail.com'
   }
 };
 

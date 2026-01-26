@@ -9,14 +9,11 @@ const JoinTeamSection = ({ onApplyClick }) => {
   const { joinTeam } = sectionsCopy;
 
   const handleApplyClick = () => {
-    // Open the modal first
-    onApplyClick();
-    
-    // Scroll to the application section after a short delay to let the modal render
+    // Scroll to the contact section
     setTimeout(() => {
-      const applicationSection = document.getElementById('application');
-      if (applicationSection) {
-        applicationSection.scrollIntoView({ 
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ 
           behavior: 'smooth',
           block: 'start'
         });
@@ -89,7 +86,7 @@ const JoinTeamSection = ({ onApplyClick }) => {
 };
 
 JoinTeamSection.propTypes = {
-  onApplyClick: PropTypes.func.isRequired
+  onApplyClick: PropTypes.func
 };
 
 export default JoinTeamSection;

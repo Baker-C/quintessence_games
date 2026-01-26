@@ -50,8 +50,8 @@ const Navigation = ({ isSoundEnabled, onSoundToggle, isHeroComplete }) => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    // Map 'join' to 'jobs' section
-    const targetId = sectionId === 'join' ? 'jobs' : sectionId;
+    // Map 'join' to 'team' section
+    const targetId = sectionId === 'join' ? 'team' : sectionId;
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ 
